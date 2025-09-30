@@ -37,17 +37,17 @@
         .training-tooltip .lic { margin-top: .6rem; font-size: .9rem; color: #6b7280; }
 
         /* Hero */
-        .hero { min-height: 85vh; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; color: #fff; text-align: center; padding: 2rem; }
+        .hero { min-height: 58vh; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; color: #fff; text-align: center; padding: 1.25rem; }
         .hero::before { content: ''; position: absolute; width: 200%; height: 200%; background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%); animation: pulse 8s ease-in-out infinite; }
         @keyframes pulse { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-2%,-2%) scale(1.05)} }
         .hero-content{ position:relative; z-index:1; max-width:900px; }
-        .hero h1{ font-size:3.2rem; font-weight:800; margin-bottom:1rem; line-height:1.2; animation:fadeInUp 1s ease-out; }
-        .hero .subtitle{ font-size:1.25rem; margin-bottom:2rem; opacity:.95; animation:fadeInUp 1s ease-out .2s backwards; }
-        .hero-stats{ display:flex; justify-content:center; gap:2.2rem; margin:1.6rem 0; animation:fadeInUp 1s ease-out .4s backwards; flex-wrap:wrap; }
+        .hero h1{ font-size:2.6rem; font-weight:800; margin-bottom:.8rem; line-height:1.2; animation:fadeInUp 1s ease-out; }
+        .hero .subtitle{ font-size:1.1rem; margin-bottom:1.2rem; opacity:.95; animation:fadeInUp 1s ease-out .2s backwards; }
+        .hero-stats{ display:flex; justify-content:center; gap:1.2rem; margin:1rem 0; animation:fadeInUp 1s ease-out .4s backwards; flex-wrap:wrap; }
         .stat{ text-align:center; }
         .stat-label{ font-size:1rem; opacity:.95; font-weight:600; }
         .stat-detail{ font-size:.85rem; opacity:.85; margin-top:.2rem; }
-        .hero-cta{ display:flex; gap:.8rem; justify-content:center; margin-top:1.4rem; animation:fadeInUp 1s ease-out .6s backwards; flex-wrap:wrap; }
+        .hero-cta{ display:flex; gap:.8rem; justify-content:center; margin-top:1rem; animation:fadeInUp 1s ease-out .6s backwards; flex-wrap:wrap; }
         @keyframes fadeInUp { from{opacity:0; transform:translateY(30px)} to{opacity:1; transform:translateY(0)} }
         .btn-primary, .btn-secondary{ background:transparent; color:#fff; padding:.85rem 1.8rem; border:2px solid #fff; border-radius:8px; text-decoration:none; font-weight:600; font-size:1rem; transition:all .25s; }
         .btn-primary:hover{ background:#d98c25; border-color:#d98c25; color:#fff; transform:translateY(-3px); box-shadow:0 12px 30px rgba(217,140,37,.3); }
@@ -148,7 +148,15 @@
         footer p{ opacity:.75; }
 
         @media (max-width: 768px){
-            .hero h1{ font-size:2rem; }
+            .hero{ min-height:60vh; padding:1rem; }
+            .hero h1{ font-size:1.9rem; }
+            .hero .subtitle{ font-size:1rem; margin-bottom:1rem; }
+            .hero-stats{ flex-direction:column; gap:.8rem; margin:.8rem 0; }
+            .efficiency-comparison{ grid-template-columns:1fr; }
+            .nav-links{ display:none; }
+            .training-content{ padding:1.6rem; }
+            .form-grid { grid-template-columns: 1fr; }
+        }
             .hero .subtitle{ font-size:1.05rem; }
             .hero-stats{ flex-direction:column; gap:1rem; }
             .efficiency-comparison{ grid-template-columns:1fr; }
