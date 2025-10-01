@@ -1,485 +1,474 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vitso | Executive Technology Leadership</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; overflow-x: hidden; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vitso | Executive Technology Leadership</title>
+  <!-- Calendly widget assets -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; overflow-x: hidden; }
 
-        /* Navigation */
-        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .logo { font-size: 1.8rem; font-weight: 700; color: #2563eb; letter-spacing: 0.5px; }
-        .nav-links { display: flex; gap: 2rem; list-style: none; }
-        .nav-links a { text-decoration: none; color: #333; font-weight: 500; transition: color 0.3s; }
-        .nav-links a:hover { color: #2563eb; }
-        .cta-button { background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%); color: #fff; padding: 0.6rem 1.1rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: transform 0.3s, box-shadow 0.3s; font-size: .95rem; }
-        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3); }
+    /* Navigation */
+    nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1200; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .logo { font-size: 1.8rem; font-weight: 700; color: #2563eb; letter-spacing: 0.5px; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: #333; font-weight: 500; transition: color 0.3s; }
+    .nav-links a:hover { color: #2563eb; }
+    .cta-button { background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%); color: #fff; padding: 0.6rem 1.1rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: transform 0.3s, box-shadow 0.3s; font-size: .95rem; }
+    .cta-button:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3); }
 
-        /* Free Training Banner */
-        .training-banner { margin-top: 70px; background: linear-gradient(135deg, #242424 0%, #334155 100%); color: #fff; padding: 1.25rem 5%; text-align: center; position: relative; overflow: visible; z-index: 2000; }
-        .training-banner-title { font-weight: 700; font-size: 1rem; margin-bottom: .75rem; letter-spacing: .2px; }
-        .training-banner-buttons { display: flex; gap: .6rem; justify-content: center; flex-wrap: wrap; align-items: center; }
-        .training-banner-btn { background: #fff; color: #242424; padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none; font-weight: 600; transition: all 0.25s; display: inline-block; font-size: .95rem; border: 1px solid #e5e7eb; }
-        .training-banner-btn:hover { background: #d98c25; color: #fff; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(217, 140, 37, 0.28); }
+    /* Free Training Banner */
+    .training-banner { margin-top: 70px; background: linear-gradient(135deg, #242424 0%, #334155 100%); color: #fff; padding: 1.1rem 5%; text-align: center; position: relative; overflow: visible; z-index: 1100; }
+    .training-banner-title { font-weight: 700; font-size: 1rem; margin-bottom: .5rem; letter-spacing: .2px; }
+    .training-banner-buttons { display: flex; gap: .6rem; justify-content: center; flex-wrap: wrap; align-items: center; }
+    .training-banner-btn { background: #fff; color: #242424; padding: 0.45rem 0.9rem; border-radius: 6px; text-decoration: none; font-weight: 600; transition: all 0.25s; display: inline-block; font-size: .92rem; border: 1px solid #e5e7eb; }
+    .training-banner-btn:hover { background: #d98c25; color: #fff; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(217, 140, 37, 0.28); }
 
-        /* Training Hover Info */
-        .training-hover { position: relative; display: inline-block; margin-left: .5rem; }
-        .training-info { font-size: .9rem; color: #e5e7eb; text-decoration: underline; cursor: pointer; }
-        .training-info:focus { outline: 2px solid #d98c25; outline-offset: 2px; }
-        .training-tooltip { display: none; position: absolute; left: 50%; transform: translateX(-50%); top: 135%; width: min(760px, 92vw); background: #fff; color: #1f2937; border: 1px solid #e5e7eb; border-radius: 10px; padding: 1rem 1.25rem; box-shadow: 0 12px 30px rgba(0,0,0,0.2); text-align: left; z-index: 3000; }
-        .training-hover:hover .training-tooltip, .training-info:focus + .training-tooltip { display: block; }
-        .training-tooltip h4 { font-size: 1.05rem; margin-bottom: .4rem; color: #111827; }
-        .training-tooltip p { margin: .4rem 0; color: #374151; }
-        .training-tooltip ul { margin: .5rem 0 .25rem; padding-left: 1.1rem; }
-        .training-tooltip li { margin: .2rem 0; }
-        .training-tooltip .lic { margin-top: .6rem; font-size: .9rem; color: #6b7280; }
+    /* Training Hover Info */
+    .training-hover { position: relative; display: inline-block; margin-left: .5rem; }
+    .training-info { font-size: .9rem; color: #e5e7eb; text-decoration: underline; cursor: pointer; }
+    .training-info:focus { outline: 2px solid #d98c25; outline-offset: 2px; }
+    .training-tooltip { display: none; position: absolute; left: 50%; transform: translateX(-50%); top: 135%; width: min(760px, 92vw); background: #fff; color: #1f2937; border: 1px solid #e5e7eb; border-radius: 10px; padding: 1rem 1.25rem; box-shadow: 0 12px 30px rgba(0,0,0,0.2); text-align: left; z-index: 3000; }
+    .training-hover:hover .training-tooltip, .training-info:focus + .training-tooltip { display: block; }
+    .training-tooltip h4 { font-size: 1.05rem; margin-bottom: .4rem; color: #111827; }
+    .training-tooltip p { margin: .4rem 0; color: #374151; }
+    .training-tooltip ul { margin: .5rem 0 .25rem; padding-left: 1.1rem; }
+    .training-tooltip li { margin: .2rem 0; }
+    .training-tooltip .lic { margin-top: .6rem; font-size: .9rem; color: #6b7280; }
 
-        /* Hero */
-        .hero { min-height: 58vh; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; color: #fff; text-align: center; padding: 1.25rem; }
-        .hero::before { content: ''; position: absolute; width: 200%; height: 200%; background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%); animation: pulse 8s ease-in-out infinite; }
-        @keyframes pulse { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-2%,-2%) scale(1.05)} }
-        .hero-content{ position:relative; z-index:1; max-width:900px; }
-        .hero h1{ font-size:2.6rem; font-weight:800; margin-bottom:.8rem; line-height:1.2; animation:fadeInUp 1s ease-out; }
-        .hero .subtitle{ font-size:1.1rem; margin-bottom:1.2rem; opacity:.95; animation:fadeInUp 1s ease-out .2s backwards; }
-        .hero-stats{ display:flex; justify-content:center; gap:1.2rem; margin:1rem 0; animation:fadeInUp 1s ease-out .4s backwards; flex-wrap:wrap; }
-        .stat{ text-align:center; }
-        .stat-label{ font-size:1rem; opacity:.95; font-weight:600; }
-        .stat-detail{ font-size:.85rem; opacity:.85; margin-top:.2rem; }
-        .hero-cta{ display:flex; gap:.8rem; justify-content:center; margin-top:1rem; animation:fadeInUp 1s ease-out .6s backwards; flex-wrap:wrap; }
-        @keyframes fadeInUp { from{opacity:0; transform:translateY(30px)} to{opacity:1; transform:translateY(0)} }
-        .btn-primary, .btn-secondary{ background:transparent; color:#fff; padding:.85rem 1.8rem; border:2px solid #fff; border-radius:8px; text-decoration:none; font-weight:600; font-size:1rem; transition:all .25s; }
-        .btn-primary:hover{ background:#d98c25; border-color:#d98c25; color:#fff; transform:translateY(-3px); box-shadow:0 12px 30px rgba(217,140,37,.3); }
-        .btn-secondary:hover{ background:#fff; color:#1e293b; transform:translateY(-3px); box-shadow:0 12px 30px rgba(255,255,255,.2); }
+    /* Hero */
+    .hero { min-height: 58vh; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; color: #fff; text-align: center; padding: 1.25rem; }
+    .hero-content{ position:relative; z-index:1; max-width:900px; }
+    .hero h1{ font-size:2.6rem; font-weight:800; margin-bottom:.8rem; line-height:1.2; }
+    .hero .subtitle{ font-size:1.1rem; margin-bottom:1.2rem; opacity:.95; }
+    .hero-stats{ display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:.5rem; align-items:start; margin:.8rem 0; }
+    .stat{ text-align:center; }
+    .stat-label{ font-size:1rem; opacity:.95; font-weight:600; }
+    .stat-detail{ font-size:.85rem; opacity:.85; margin-top:.2rem; }
+    .hero-cta{ display:flex; gap:.8rem; justify-content:center; margin-top:1rem; flex-wrap:wrap; }
+    .btn-primary, .btn-secondary{ background:transparent; color:#fff; padding:.75rem 1.5rem; border:2px solid #fff; border-radius:8px; text-decoration:none; font-weight:600; font-size:1rem; transition:all .25s; display:inline-block; }
+    .btn-primary:hover{ background:#d98c25; border-color:#d98c25; color:#fff; transform:translateY(-3px); box-shadow:0 12px 30px rgba(217,140,37,.3); }
+    .btn-secondary:hover{ background:#fff; color:#1e293b; transform:translateY(-3px); box-shadow:0 12px 30px rgba(255,255,255,.2); }
 
-        /* Trust */
-        .trust-section{ padding:3rem 5%; background:#f8fafc; text-align:center; }
-        .trust-section p{ color:#64748b; font-size:.9rem; margin-bottom:1rem; text-transform:uppercase; letter-spacing:1px; }
-        .credentials{ display:flex; justify-content:center; gap:2rem; flex-wrap:wrap; }
-        .credential-badge{ background:#fff; padding:1rem 2rem; border-radius:8px; font-weight:600; color:#242424; box-shadow:0 2px 10px rgba(0,0,0,.05); border-left:4px solid #d98c25; }
+    /* Trust */
+    .trust-section{ padding:3rem 5%; background:#f8fafc; text-align:center; }
+    .trust-section p{ color:#64748b; font-size:.9rem; margin-bottom:1rem; text-transform:uppercase; letter-spacing:1px; }
+    .credentials{ display:flex; justify-content:center; gap:2rem; flex-wrap:wrap; }
+    .credential-badge{ background:#fff; padding:1rem 2rem; border-radius:8px; font-weight:600; color:#242424; box-shadow:0 2px 10px rgba(0,0,0,.05); border-left:4px solid #d98c25; }
 
-        /* Services */
-        .services{ padding:5rem 5%; background:#fff; }
-        .section-header{ text-align:center; margin-bottom:4rem; }
-        .section-header h2{ font-size:2.3rem; color:#1e293b; margin-bottom:1rem; }
-        .section-header p{ font-size:1.1rem; color:#64748b; max-width:800px; margin:0 auto; }
-        .services-grid{ display:grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap:2rem; max-width:1200px; margin:0 auto; }
-        .service-card{ background:#fff; border-radius:16px; padding:2rem; box-shadow:0 4px 6px rgba(0,0,0,.05); transition:all .25s; border:2px solid transparent; position:relative; overflow:hidden; }
-        .service-card::before{ content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg,#d98c25,#7065ef); transform:scaleX(0); transition:transform .25s; }
-        .service-card:hover{ transform:translateY(-8px); box-shadow:0 18px 36px rgba(0,0,0,.08); border-color:#e0e7ff; }
-        .service-card:hover::before{ transform:scaleX(1); }
-        .service-icon{ width:48px; height:48px; background:linear-gradient(135deg,#d98c25 0%, #e09d3a 100%); border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:1rem; font-size:1.4rem; color:#fff; font-weight:700; }
-        .service-card h3{ font-size:1.35rem; color:#1e293b; margin-bottom:.6rem; }
-        .service-card p{ color:#64748b; margin-bottom:.8rem; line-height:1.75; }
-        .service-tag{ display:inline-block; background:#fff7ed; color:#d98c25; padding:.35rem .9rem; border-radius:20px; font-size:.8rem; font-weight:700; margin-top:.5rem; }
+    /* Services */
+    .services{ padding:5rem 5%; background:#fff; }
+    .section-header{ text-align:center; margin-bottom:4rem; }
+    .section-header h2{ font-size:2.3rem; color:#1e293b; margin-bottom:1rem; }
+    .section-header p{ font-size:1.1rem; color:#64748b; max-width:800px; margin:0 auto; }
+    .services-grid{ display:grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap:2rem; max-width:1200px; margin:0 auto; }
+    .service-card{ background:#fff; border-radius:16px; padding:2rem; box-shadow:0 4px 6px rgba(0,0,0,.05); transition:all .25s; border:2px solid transparent; position:relative; overflow:hidden; }
+    .service-card::before{ content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg,#d98c25,#7065ef); transform:scaleX(0); transition:transform .25s; }
+    .service-card:hover{ transform:translateY(-8px); box-shadow:0 18px 36px rgba(0,0,0,.08); border-color:#e0e7ff; }
+    .service-card:hover::before{ transform:scaleX(1); }
+    .service-icon{ width:48px; height:48px; background:linear-gradient(135deg,#d98c25 0%, #e09d3a 100%); border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:1rem; font-size:1.4rem; color:#fff; font-weight:700; }
+    .service-card h3{ font-size:1.35rem; color:#1e293b; margin-bottom:.6rem; }
+    .service-card p{ color:#64748b; margin-bottom:.8rem; line-height:1.75; }
+    .service-tag{ display:inline-block; background:#fff7ed; color:#d98c25; padding:.35rem .9rem; border-radius:20px; font-size:.8rem; font-weight:700; margin-top:.5rem; }
 
-        /* Philosophy */
-        .philosophy{ padding:5rem 5%; background:#f8fafc; }
-        .philosophy-content{ max-width:1000px; margin:0 auto; }
-        .philosophy h2{ font-size:2.2rem; color:#1e293b; margin-bottom:1.2rem; text-align:center; }
-        .philosophy-intro{ font-size:1.1rem; color:#475569; text-align:center; margin-bottom:2.2rem; line-height:1.8; }
-        .philosophy-grid{ display:grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap:2rem; margin-top:1.2rem; }
-        .philosophy-card{ background:#fff; padding:1.6rem; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,.05); }
-        .philosophy-card h3{ color:#d98c25; margin-bottom:.7rem; font-size:1.2rem; }
-        .philosophy-card p{ color:#64748b; line-height:1.75; }
+    /* Philosophy */
+    .philosophy{ padding:5rem 5%; background:#f8fafc; }
+    .philosophy-content{ max-width:1000px; margin:0 auto; }
+    .philosophy h2{ font-size:2.2rem; color:#1e293b; margin-bottom:1.2rem; text-align:center; }
+    .philosophy-intro{ font-size:1.1rem; color:#475569; text-align:center; margin-bottom:2.2rem; line-height:1.8; }
+    .philosophy-grid{ display:grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap:2rem; margin-top:1.2rem; }
+    .philosophy-card{ background:#fff; padding:1.6rem; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,.05); }
+    .philosophy-card h3{ color:#d98c25; margin-bottom:.7rem; font-size:1.2rem; }
+    .philosophy-card p{ color:#64748b; line-height:1.75; }
 
-        /* Value Prop */
-        .value-prop{ padding:5rem 5%; background:linear-gradient(135deg,#1e293b 0%, #334155 100%); color:#fff; }
-        .value-content{ max-width:1200px; margin:0 auto; }
-        .value-header{ text-align:center; margin-bottom:3.2rem; }
-        .value-header h2{ font-size:2.3rem; margin-bottom:1rem; }
-        .value-header p{ font-size:1.1rem; opacity:.9; max-width:800px; margin:0 auto; }
-        .efficiency-comparison{ display:grid; grid-template-columns:1fr 1fr; gap:2.4rem; margin-bottom:3rem; }
-        .efficiency-card{ background:rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius:16px; padding:2rem; }
-        .efficiency-card h3{ font-size:1.5rem; margin-bottom:1rem; text-align:center; }
-        .time-breakdown{ margin-top:1rem; }
-        .time-item{ display:flex; justify-content:space-between; padding:.6rem 0; border-bottom:1px solid rgba(255,255,255,0.2); }
-        .time-item:last-child{ border-bottom:none; }
-        .time-label{ font-weight:500; }
-        .time-value{ font-weight:700; color:#22c55e; }
-        .time-value.inefficient{ color:#ef4444; }
-        .comparison-table-wrapper{ background:rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius:16px; padding:2rem; overflow-x:auto; }
-        .comparison-table-wrapper h3{ font-size:1.5rem; margin-bottom:1rem; text-align:center; }
-        .comparison-table{ width:100%; border-collapse:collapse; }
-        .comparison-table th{ padding:1rem; text-align:left; border-bottom:2px solid rgba(255,255,255,0.3); font-weight:700; font-size:1rem; }
-        .comparison-table td{ padding:1rem; border-bottom:1px solid rgba(255,255,255,0.1); }
-        .comparison-table tr:last-child td{ border-bottom:none; }
-        .comparison-table .highlight{ color:#22c55e; font-weight:700; }
-        .table-note{ margin-top:1rem; font-size:.9rem; opacity:.85; text-align:center; }
+    /* Value Prop */
+    .value-prop{ padding:5rem 5%; background:linear-gradient(135deg,#1e293b 0%, #334155 100%); color:#fff; }
+    .value-content{ max-width:1200px; margin:0 auto; }
+    .value-header{ text-align:center; margin-bottom:3.2rem; }
+    .value-header h2{ font-size:2.3rem; margin-bottom:1rem; }
+    .value-header p{ font-size:1.1rem; opacity:.9; max-width:800px; margin:0 auto; }
+    .efficiency-comparison{ display:grid; grid-template-columns:1fr 1fr; gap:2.4rem; margin-bottom:3rem; }
+    .efficiency-card{ background:rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius:16px; padding:2rem; }
+    .efficiency-card h3{ font-size:1.5rem; margin-bottom:1rem; text-align:center; }
+    .time-breakdown{ margin-top:1rem; }
+    .time-item{ display:flex; justify-content:space-between; padding:.6rem 0; border-bottom:1px solid rgba(255,255,255,0.2); }
+    .time-item:last-child{ border-bottom:none; }
+    .time-label{ font-weight:500; }
+    .time-value{ font-weight:700; color:#22c55e; }
+    .time-value.inefficient{ color:#ef4444; }
+    .comparison-table-wrapper{ background:rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius:16px; padding:2rem; overflow-x:auto; }
+    .comparison-table-wrapper h3{ font-size:1.5rem; margin-bottom:1rem; text-align:center; }
+    .comparison-table{ width:100%; border-collapse:collapse; }
+    .comparison-table th{ padding:1rem; text-align:left; border-bottom:2px solid rgba(255,255,255,0.3); font-weight:700; font-size:1rem; }
+    .comparison-table td{ padding:1rem; border-bottom:1px solid rgba(255,255,255,0.1); }
+    .comparison-table tr:last-child td{ border-bottom:none; }
+    .comparison-table .highlight{ color:#22c55e; font-weight:700; }
+    .table-note{ margin-top:1rem; font-size:.9rem; opacity:.85; text-align:center; }
 
-        /* Free Training Section */
-        .training-section{ padding:5rem 5%; background:#fff; }
-        .training-content{ max-width:1000px; margin:0 auto; background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); border-radius:20px; padding:2.4rem; border:3px solid #d98c25; position:relative; overflow:hidden; }
-        .training-badge{ display:inline-block; background:#d98c25; color:#fff; padding:.45rem 1.2rem; border-radius:30px; font-weight:700; font-size:.9rem; margin-bottom:1rem; letter-spacing:.6px; }
-        .training-content h2{ font-size:2rem; color:#242424; margin-bottom:.8rem; }
-        .training-content p{ color:#475569; line-height:1.8; margin-bottom:.6rem; font-size:1.05rem; }
-        .training-highlights{ display:grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap:1rem; margin:1.6rem 0; }
-        .training-highlight{ display:flex; align-items:center; gap:.6rem; background:#fff; padding:.9rem; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.05); }
-        .training-highlight::before{ content:''; width:8px; height:8px; border-radius:999px; background:#d98c25; display:inline-block; }
-        .training-cta{ display:flex; gap:.8rem; margin-top:1.4rem; flex-wrap:wrap; }
-        .btn-training{ background:#d98c25; color:#fff; padding:.8rem 1.4rem; border-radius:8px; text-decoration:none; font-weight:600; font-size:1rem; transition:all .25s; display:inline-flex; align-items:center; gap:.5rem; border:1px solid transparent; }
-        .btn-training:hover{ background:#c27a1f; transform:translateY(-2px); box-shadow:0 10px 25px rgba(217,140,37,0.28); }
+    /* Free Training Section */
+    .training-section{ padding:5rem 5%; background:#fff; }
+    .training-content{ max-width:1000px; margin:0 auto; background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); border-radius:20px; padding:2.4rem; border:3px solid #d98c25; position:relative; overflow:hidden; }
+    .training-badge{ display:inline-block; background:#d98c25; color:#fff; padding:.45rem 1.2rem; border-radius:30px; font-weight:700; font-size:.9rem; margin-bottom:1rem; letter-spacing:.6px; }
+    .training-content h2{ font-size:2rem; color:#242424; margin-bottom:.8rem; }
+    .training-content p{ color:#475569; line-height:1.8; margin-bottom:.6rem; font-size:1.05rem; }
+    .training-highlights{ display:grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap:1rem; margin:1.6rem 0; }
+    .training-highlight{ display:flex; align-items:center; gap:.6rem; background:#fff; padding:.9rem; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.05); }
+    .training-highlight::before{ content:''; width:8px; height:8px; border-radius:999px; background:#d98c25; display:inline-block; }
+    .training-cta{ display:flex; gap:.8rem; margin-top:1.4rem; flex-wrap:wrap; }
+    .btn-training{ background:#d98c25; color:#fff; padding:.8rem 1.4rem; border-radius:8px; text-decoration:none; font-weight:600; font-size:1rem; transition:all .25s; display:inline-flex; align-items:center; gap:.5rem; border:1px solid transparent; }
+    .btn-training:hover{ background:#c27a1f; transform:translateY(-2px); box-shadow:0 10px 25px rgba(217,140,37,0.28); }
 
-        /* CTA / Contact */
-        .cta-section{ padding:5rem 5%; background:#f8fafc; text-align:center; }
-        .cta-content{ max-width:880px; margin:0 auto; }
-        .cta-content h2{ font-size:2.3rem; color:#1e293b; margin-bottom:1rem; }
-        .cta-content p{ font-size:1.1rem; color:#64748b; margin-bottom:1.4rem; }
-        .contact-options{ display:flex; justify-content:center; gap:2rem; margin-top:1.2rem; flex-wrap:wrap; }
-        .contact-card{ background:#fff; padding:1.6rem; border-radius:12px; box-shadow:0 4px 6px rgba(0,0,0,0.05); min-width:260px; }
-        .contact-card h3{ color:#1e293b; margin-bottom:.4rem; }
-        .contact-card a{ color:#d98c25; text-decoration:none; font-weight:600; font-size:1.05rem; }
+    /* CTA / Contact */
+    .cta-section{ padding:5rem 5%; background:#f8fafc; text-align:center; }
+    .cta-content{ max-width:880px; margin:0 auto; }
+    .cta-content h2{ font-size:2.3rem; color:#1e293b; margin-bottom:1rem; }
+    .cta-content p{ font-size:1.1rem; color:#64748b; margin-bottom:1.4rem; }
+    .contact-options{ display:flex; justify-content:center; gap:2rem; margin-top:1.2rem; flex-wrap:wrap; }
+    .contact-card{ background:#fff; padding:1.6rem; border-radius:12px; box-shadow:0 4px 6px rgba(0,0,0,0.05); min-width:260px; }
+    .contact-card h3{ color:#1e293b; margin-bottom:.4rem; }
+    .contact-card a{ color:#d98c25; text-decoration:none; font-weight:600; font-size:1.05rem; }
 
-        /* Contact Form */
-        .contact-form { margin: 1.6rem auto 0; max-width: 880px; background:#fff; padding: 1.6rem; border-radius: 12px; box-shadow:0 6px 14px rgba(0,0,0,.06); border: 1px solid #e5e7eb; text-align: left; }
-        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-        .form-grid .full { grid-column: 1 / -1; }
-        label { display:block; font-weight:600; color:#374151; font-size:.95rem; margin-bottom:.25rem; }
-        input, textarea { width:100%; padding:.8rem; border:1px solid #d1d5db; border-radius:8px; font-size:1rem; color:#111827; background:#fff; }
-        textarea { min-height: 140px; resize: vertical; }
-        .form-actions { margin-top: 1rem; display:flex; gap:.8rem; align-items:center; }
-        .btn-submit { background:#1f2937; color:#fff; border:none; border-radius:8px; padding:.9rem 1.4rem; font-weight:700; cursor:pointer; }
-        .btn-submit:hover { background:#111827; }
-        .form-note { font-size:.9rem; color:#6b7280; }
+    /* Contact Form */
+    .contact-form { margin: 1.6rem auto 0; max-width: 880px; background:#fff; padding: 1.6rem; border-radius: 12px; box-shadow:0 6px 14px rgba(0,0,0,.06); border: 1px solid #e5e7eb; text-align: left; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-grid .full { grid-column: 1 / -1; }
+    label { display:block; font-weight:600; color:#374151; font-size:.95rem; margin-bottom:.25rem; }
+    input, textarea { width:100%; padding:.8rem; border:1px solid #d1d5db; border-radius:8px; font-size:1rem; color:#111827; background:#fff; }
+    textarea { min-height: 140px; resize: vertical; }
+    .form-actions { margin-top: 1rem; display:flex; gap:.8rem; align-items:center; }
+    .btn-submit { background:#1f2937; color:#fff; border:none; border-radius:8px; padding:.9rem 1.4rem; font-weight:700; cursor:pointer; }
+    .btn-submit:hover { background:#111827; }
+    .form-note { font-size:.9rem; color:#6b7280; }
 
-        /* Footer */
-        footer{ background:#1e293b; color:#fff; padding:3rem 5%; text-align:center; }
-        footer p{ opacity:.75; }
+    /* Footer */
+    footer{ background:#1e293b; color:#fff; padding:3rem 5%; text-align:center; }
+    footer p{ opacity:.75; }
 
-        @media (max-width: 768px){
-            .hero{ min-height:60vh; padding:1rem; }
-            .hero h1{ font-size:1.9rem; }
-            .hero .subtitle{ font-size:1rem; margin-bottom:1rem; }
-            .hero-stats{ flex-direction:column; gap:.8rem; margin:.8rem 0; }
-            .efficiency-comparison{ grid-template-columns:1fr; }
-            .nav-links{ display:none; }
-            .training-content{ padding:1.6rem; }
-            .form-grid { grid-template-columns: 1fr; }
-        }
-            .hero .subtitle{ font-size:1.05rem; }
-            .hero-stats{ flex-direction:column; gap:1rem; }
-            .efficiency-comparison{ grid-template-columns:1fr; }
-            .nav-links{ display:none; }
-            .training-content{ padding:1.6rem; }
-            .form-grid { grid-template-columns: 1fr; }
-        }
-    </style>
-    <!-- Calendly widget assets -->
-    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
-    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+    @media (max-width: 768px){
+      .hero{ min-height:60vh; padding:1rem; }
+      .hero h1{ font-size:1.9rem; }
+      .hero .subtitle{ font-size:1.05rem; }
+      .hero-stats{ grid-template-columns: 1fr; gap:.8rem; }
+      .efficiency-comparison{ grid-template-columns:1fr; }
+      .nav-links{ display:none; }
+      .training-content{ padding:1.6rem; }
+      .form-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-    <nav>
-        <div class="logo">VITSO</div>
-        <ul class="nav-links">
-            <li><a href="#services">Services</a></li>
-            <li><a href="#philosophy">Approach</a></li>
-            <li><a href="#training">Free Training</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <a href="#contact" class="cta-button">Schedule Consultation</a>
-    </nav>
+  <nav>
+    <div class="logo">VITSO</div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#philosophy">Approach</a></li>
+      <li><a href="#training">Free Training</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="cta-button">Schedule Consultation</a>
+  </nav>
 
-    <div class="training-banner">
-        <div class="training-banner-title">FREE TRAINING: Technical HIPAA Training for Builders</div>
-        <div class="training-banner-buttons">
-            <a href="https://vitso-tom.github.io/phi-pii-training/" target="_blank" class="training-banner-btn">Launch Training</a>
-            <a href="https://github.com/vitso-tom/phi-pii-training" target="_blank" class="training-banner-btn">View on GitHub</a>
-            <span class="training-hover">
-                <a class="training-info" tabindex="0">About this free training</a>
-                <div class="training-tooltip" role="dialog" aria-label="About this free training">
-                    <h4>Why this exists</h4>
-                    <p>Most PHI and PII training is written for clinical and administrative audiences. Technical teams face different risks. Data can leak through logs, traces, analytics, test fixtures, feature flags, migrations, and tickets.</p>
-                    <p>We built this course to meet builders where they work. It explains when values become regulated in context, how to prevent exposure in everyday workflows, and what to do if something slips through. It is free and remixable and includes a 29 question check to confirm understanding.</p>
-                    <h4>Who it is for</h4>
-                    <ul>
-                        <li>Developers, SREs, data engineers, product</li>
-                        <li>Real technical scenarios with do this now guidance</li>
-                        <li>Clear handling patterns and simple escalation checklists</li>
-                        <li>Self contained HTML you can run and adapt</li>
-                    </ul>
-                    <p class="lic">License: Content CC BY 4.0 and code MIT.</p>
-                </div>
-            </span>
+  <div class="training-banner">
+    <div class="training-banner-title">FREE TRAINING: Technical HIPAA Training for Builders</div>
+    <div class="training-banner-buttons">
+      <a href="https://vitso-tom.github.io/phi-pii-training/" target="_blank" class="training-banner-btn">Launch Training</a>
+      <a href="https://github.com/vitso-tom/phi-pii-training" target="_blank" class="training-banner-btn">View on GitHub</a>
+      <span class="training-hover">
+        <a class="training-info" tabindex="0">About this free training</a>
+        <div class="training-tooltip" role="dialog" aria-label="About this free training">
+          <h4>Why this exists</h4>
+          <p>Most PHI and PII training is written for clinical and administrative audiences. Technical teams face different risks. Data can leak through logs, traces, analytics, test fixtures, feature flags, migrations, and tickets.</p>
+          <p>We built this course to meet builders where they work. It explains when values become regulated in context, how to prevent exposure in everyday workflows, and what to do if something slips through. It is free and remixable and includes a 29 question check to confirm understanding.</p>
+          <h4>Who it is for</h4>
+          <ul>
+            <li>Developers, SREs, data engineers, product</li>
+            <li>Real technical scenarios with do this now guidance</li>
+            <li>Clear handling patterns and simple escalation checklists</li>
+            <li>Self contained HTML you can run and adapt</li>
+          </ul>
+          <p class="lic">License: Content CC BY 4.0 and code MIT.</p>
         </div>
+      </span>
     </div>
+  </div>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Technology Leadership That<br />Accelerates Your Business</h1>
-            <p class="subtitle">CIO and CISO expertise working in lockstep. Decades of experience in high regulation industries, delivering security that enables rather than blocks.</p>
-            <div class="hero-stats">
-                <div class="stat">
-                    <div class="stat-label">100% Strategic Focus</div>
-                    <div class="stat-detail">No overhead, focused on value</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-label">Integrated Leadership</div>
-                    <div class="stat-detail">CIO and CISO working as one</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-label">Right Sized Security</div>
-                    <div class="stat-detail">Pragmatic, not bureaucratic</div>
-                </div>
-            </div>
-            <div class="hero-cta">
-                <a href="#contact" class="btn-primary">Get Started</a>
-                <a href="#philosophy" class="btn-secondary">Our Approach</a>
-            </div>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Technology Leadership That<br />Accelerates Your Business</h1>
+      <p class="subtitle">CIO and CISO expertise working in lockstep. Decades of experience in high regulation industries, delivering security that enables rather than blocks.</p>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-label">100% Strategic Focus</div>
+          <div class="stat-detail">No overhead, focused on value</div>
         </div>
-    </section>
-
-    <section class="trust-section">
-        <p>Proven Expertise</p>
-        <div class="credentials">
-            <div class="credential-badge">Industry Leading Certified Experience</div>
-            <div class="credential-badge">Decades of Accelerated Technology Strategy Success</div>
-            <div class="credential-badge">Proven Leadership in Highly Regulated Industries</div>
-            <div class="credential-badge">Integrated CIO and CISO Approach</div>
+        <div class="stat">
+          <div class="stat-label">Integrated Leadership</div>
+          <div class="stat-detail">CIO and CISO working as one</div>
         </div>
-    </section>
-
-    <section class="philosophy" id="philosophy">
-        <div class="philosophy-content">
-            <h2>Technology and Security Working as One</h2>
-            <p class="philosophy-intro">Many companies silo security from technology. That creates friction and slows innovation. We integrate them and turn security requirements into development velocity and compliance into competitive advantage.</p>
-            <div class="philosophy-grid">
-                <div class="philosophy-card">
-                    <h3>Turning Techies into Technologists</h3>
-                    <p>We help technical teams understand technology in business context. Not just the stack, but the cost to value ratio, the strategic why, and how to build safely without killing momentum.</p>
-                </div>
-                <div class="philosophy-card">
-                    <h3>Security that Accelerates</h3>
-                    <p>Builders drive innovation. Compliance sets boundaries. Integrated technology and security operations strike the balance that makes both effective. When these forces work together, security becomes an enabler.</p>
-                </div>
-                <div class="philosophy-card">
-                    <h3>Right Sized for Your Reality</h3>
-                    <p>Before committing to heavy frameworks like HITRUST or ISO, understand what you are securing and why. We start with readiness and build a defensible security and privacy program that fits your business like a custom suit.</p>
-                </div>
-            </div>
+        <div class="stat">
+          <div class="stat-label">Right Sized Security</div>
+          <div class="stat-detail">Pragmatic, not bureaucratic</div>
         </div>
-    </section>
+      </div>
+      <div class="hero-cta">
+        <a href="#contact" class="btn-primary">Get Started</a>
+        <a href="#philosophy" class="btn-secondary">Our Approach</a>
+      </div>
+    </div>
+  </section>
 
-    <section class="services" id="services">
-        <div class="section-header">
-            <h2>Flexible Engagement Models</h2>
-            <p>From one time advisory to ongoing fractional leadership, we adapt to your needs and timeline. Pay for strategic expertise when you need it without the overhead of full time executive hiring.</p>
+  <section class="trust-section">
+    <p>Proven Expertise</p>
+    <div class="credentials">
+      <div class="credential-badge">Industry Leading Certified Experience</div>
+      <div class="credential-badge">Decades of Accelerated Technology Strategy Success</div>
+      <div class="credential-badge">Proven Leadership in Highly Regulated Industries</div>
+      <div class="credential-badge">Integrated CIO and CISO Approach</div>
+    </div>
+  </section>
+
+  <section class="philosophy" id="philosophy">
+    <div class="philosophy-content">
+      <h2>Technology and Security Working as One</h2>
+      <p class="philosophy-intro">Many companies silo security from technology. That creates friction and slows innovation. We integrate them and turn security requirements into development velocity and compliance into competitive advantage.</p>
+      <div class="philosophy-grid">
+        <div class="philosophy-card">
+          <h3>Turning Techies into Technologists</h3>
+          <p>We help technical teams understand technology in business context. Not just the stack, but the cost to value ratio, the strategic why, and how to build safely without killing momentum.</p>
         </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">A</div>
-                <h3>Advisory</h3>
-                <p>Strategic guidance for critical technology decisions, vendor selection, security assessments, and compliance initiatives. Get C level expertise when you need it.</p>
-                <p><strong>Perfect for:</strong> Technology strategy, vendor evaluations, security roadmaps, compliance planning, executive mentoring and development</p>
-                <p style="margin-top: .6rem; font-style: italic; color: #475569;">We have mentored technology leaders into executive roles as CIOs and CISOs and helped them develop strategic thinking and business acumen for the C level.</p>
-                <span class="service-tag">Project Based</span>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">T</div>
-                <h3>Transition</h3>
-                <p>Interim CIO or CISO leadership during searches, departures, or organizational changes. Maintain momentum and stability during critical transition periods.</p>
-                <p><strong>Ideal for:</strong> Leadership gaps, M&A integration, restructuring, and temporary coverage needs</p>
-                <span class="service-tag">3 to 12 Months</span>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">F</div>
-                <h3>Fractional</h3>
-                <p>Part time CIO and CISO working as integrated executive team members. Strategic leadership, vendor management, team development, and technology oversight on an ongoing basis.</p>
-                <p><strong>Best for:</strong> Growing companies that want continuous C level expertise without full time cost</p>
-                <span class="service-tag">Ongoing Partnership</span>
-            </div>
+        <div class="philosophy-card">
+          <h3>Security that Accelerates</h3>
+          <p>Builders drive innovation. Compliance sets boundaries. Integrated technology and security operations strike the balance that makes both effective. When these forces work together, security becomes an enabler.</p>
         </div>
-    </section>
-
-    <section class="value-prop" id="value">
-        <div class="value-content">
-            <div class="value-header">
-                <h2>Strategic Expertise When and Where You Need It</h2>
-                <p>Whether you are building your first technology leadership team or augmenting existing capabilities, fractional and advisory services let you access specialized expertise matched to your needs without long commitments.</p>
-            </div>
-            <div class="efficiency-comparison">
-                <div class="efficiency-card">
-                    <h3>Traditional Full Time Hire</h3>
-                    <div class="time-breakdown">
-                        <div class="time-item"><span class="time-label">Total Annual Investment</span><span class="time-value inefficient">$230K to $408K</span></div>
-                        <div class="time-item"><span class="time-label">Recruiting Timeline</span><span class="time-value inefficient">3 to 6 months</span></div>
-                        <div class="time-item"><span class="time-label">Scope</span><span class="time-value inefficient">Single role focus</span></div>
-                        <div class="time-item"><span class="time-label">Business Experience</span><span class="time-value inefficient">Variable depth</span></div>
-                    </div>
-                </div>
-                <div class="efficiency-card">
-                    <h3>Vitso Fractional Executive Partner</h3>
-                    <div class="time-breakdown">
-                        <div class="time-item"><span class="time-label">Annual Investment</span><span class="time-value">$48K to $82K</span></div>
-                        <div class="time-item"><span class="time-label">Time to Value</span><span class="time-value">Immediate</span></div>
-                        <div class="time-item"><span class="time-label">Scope</span><span class="time-value">CIO, CISO, and business strategy</span></div>
-                        <div class="time-item"><span class="time-label">Cross Functional Expertise</span><span class="time-value">Technology, security, sales, and operations</span></div>
-                    </div>
-                </div>
-            </div>
-            <div class="comparison-table-wrapper">
-                <h3>Cost and Impact Comparison</h3>
-                <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Full Time CIO or CISO</th>
-                            <th>Vitso Fractional Executive Partner</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Base Compensation</strong></td>
-                            <td>$177K to $314K*</td>
-                            <td class="highlight">$48K to $82K**</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Benefits and Overhead</strong></td>
-                            <td>$53K to $94K (30%)**</td>
-                            <td class="highlight">$0</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Total Annual Cost</strong></td>
-                            <td>$230K to $408K</td>
-                            <td class="highlight">$48K to $82K</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Recruiting Time</strong></td>
-                            <td>3 to 6 months</td>
-                            <td class="highlight">Immediate</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Executive Impact</strong></td>
-                            <td>Technology only focus</td>
-                            <td class="highlight">Business strategy, presales, customer audits, partner and vendor governance, RIF and SWOT support</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Multi Discipline</strong></td>
-                            <td>Often one role</td>
-                            <td class="highlight">Integrated CIO and CISO</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Strategic Focus</strong></td>
-                            <td>About 33% of time</td>
-                            <td class="highlight">Focused time on strategy</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="table-note">
-                    * Glassdoor 2025 CIO range 25th to 75th percentile. ** Benefits overhead based on U.S. Bureau of Labor Statistics average for professional workers. *** Vitso pricing based on list to average rates by engagement and commitment level.
-                </div>
-                <div style="margin-top: .8rem; font-size: .98rem; text-align:center; opacity:.95;">
-                    Beyond CIO and CISO coverage, Vitso supports boardroom and customer facing work including presales, implementation, customer audit defense, recruitment, partner and vendor governance, and structured analysis such as RIF and SWOT.
-                </div>
-            </div>
+        <div class="philosophy-card">
+          <h3>Right Sized for Your Reality</h3>
+          <p>Before committing to heavy frameworks like HITRUST or ISO, understand what you are securing and why. We start with readiness and build a defensible security and privacy program that fits your business like a custom suit.</p>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Free Training Section target ID added so the header link works -->
-    <section class="training-section" id="training">
-        <div class="training-content">
-            <span class="training-badge">Free Resource</span>
-            <h2>Technical HIPAA Training for Builders</h2>
-            <p>This short course covers the practical handling of PHI and PII in modern development and data workflows. It was written for builders and is free to use and adapt.</p>
-            <div class="training-highlights">
-                <div class="training-highlight">Real world scenarios from code, data, and ops</div>
-                <div class="training-highlight">Clear handling patterns and escalation checks</div>
-                <div class="training-highlight">Self contained HTML that runs anywhere</div>
-                <div class="training-highlight">Includes a 29 question knowledge check</div>
-            </div>
-            <div class="training-cta">
-                <a class="btn-training" href="https://vitso-tom.github.io/phi-pii-training/" target="_blank">Launch Training</a>
-                <a class="btn-training" href="https://github.com/vitso-tom/phi-pii-training" target="_blank">View on GitHub</a>
-            </div>
+  <section class="services" id="services">
+    <div class="section-header">
+      <h2>Flexible Engagement Models</h2>
+      <p>From one time advisory to ongoing fractional leadership, we adapt to your needs and timeline. Pay for strategic expertise when you need it without the overhead of full time executive hiring.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">A</div>
+        <h3>Advisory</h3>
+        <p>Strategic guidance for critical technology decisions, vendor selection, security assessments, and compliance initiatives. Get C level expertise when you need it.</p>
+        <p><strong>Perfect for:</strong> Technology strategy, vendor evaluations, security roadmaps, compliance planning, executive mentoring and development</p>
+        <p style="margin-top: .6rem; font-style: italic; color: #475569;">We have mentored technology leaders into executive roles as CIOs and CISOs and helped them develop strategic thinking and business acumen for the C level.</p>
+        <span class="service-tag">Project Based</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">T</div>
+        <h3>Transition</h3>
+        <p>Interim CIO or CISO leadership during searches, departures, or organizational changes. Maintain momentum and stability during critical transition periods.</p>
+        <p><strong>Ideal for:</strong> Leadership gaps, M&A integration, restructuring, and temporary coverage needs</p>
+        <span class="service-tag">3 to 12 Months</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">F</div>
+        <h3>Fractional</h3>
+        <p>Part time CIO and CISO working as integrated executive team members. Strategic leadership, vendor management, team development, and technology oversight on an ongoing basis.</p>
+        <p><strong>Best for:</strong> Growing companies that want continuous C level expertise without full time cost</p>
+        <span class="service-tag">Ongoing Partnership</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="value-prop" id="value">
+    <div class="value-content">
+      <div class="value-header">
+        <h2>Strategic Expertise When and Where You Need It</h2>
+        <p>Whether you are building your first technology leadership team or augmenting existing capabilities, fractional and advisory services let you access specialized expertise matched to your needs without long commitments.</p>
+      </div>
+      <div class="efficiency-comparison">
+        <div class="efficiency-card">
+          <h3>Traditional Full Time Hire</h3>
+          <div class="time-breakdown">
+            <div class="time-item"><span class="time-label">Total Annual Investment</span><span class="time-value inefficient">$230K to $408K</span></div>
+            <div class="time-item"><span class="time-label">Recruiting Timeline</span><span class="time-value inefficient">3 to 6 months</span></div>
+            <div class="time-item"><span class="time-label">Scope</span><span class="time-value inefficient">Single role focus</span></div>
+            <div class="time-item"><span class="time-label">Business Experience</span><span class="time-value inefficient">Variable depth</span></div>
+          </div>
         </div>
-    </section>
-
-    <!-- Contact / CTA with working anchor and simple form -->
-    <section class="cta-section" id="contact">
-        <div class="cta-content">
-            <h2>Start a Conversation</h2>
-            <p>Tell us a little about your goals. We will respond quickly and suggest next steps.</p>
-            <div class="contact-options">
-                <div class="contact-card">
-                    <h3>Email</h3>
-                    <a href="mailto:info@vitsotech.com">info@vitsotech.com</a>
-                </div>
-                <div class="contact-card">
-                    <h3>Schedule</h3>
-                    <!-- Replace the href below with your scheduling link if you have one (Cal.com or Calendly) -->
-                    <a href="https://calendly.com/vitso/30min" target="_blank" rel="noopener">Book a 30 minute intro</a>
-                </div>
-            </div>
+        <div class="efficiency-card">
+          <h3>Vitso Fractional Executive Partner</h3>
+          <div class="time-breakdown">
+            <div class="time-item"><span class="time-label">Annual Investment</span><span class="time-value">$48K to $82K</span></div>
+            <div class="time-item"><span class="time-label">Time to Value</span><span class="time-value">Immediate</span></div>
+            <div class="time-item"><span class="time-label">Scope</span><span class="time-value">CIO, CISO, and business strategy</span></div>
+            <div class="time-item"><span class="time-label">Cross Functional Expertise</span><span class="time-value">Technology, security, sales, and operations</span></div>
+          </div>
         </div>
-        <form id="contactForm" class="contact-form">
-            <!-- Replace `your_form_id` with your Formspree endpoint or wire this to your existing backend/form handler. -->
-            <div class="form-grid">
-                <div>
-                    <label for="name">Your Name</label>
-                    <input id="name" name="name" type="text" required />
-                </div>
-                <div>
-                    <label for="email">Email</label>
-                    <input id="email" name="email" type="email" required />
-                </div>
-                <div>
-                    <label for="company">Company</label>
-                    <input id="company" name="company" type="text" />
-                </div>
-                <div>
-                    <label for="role">Role</label>
-                    <input id="role" name="role" type="text" />
-                </div>
-                <div class="full">
-                    <label for="message">How can we help?</label>
-                    <textarea id="message" name="message" placeholder="Briefly describe your goals or challenges" required></textarea>
-                </div>
-            </div>
-            <div class="form-actions">
-                <button class="btn-submit" type="submit">Schedule 30 minute meeting</button>
-                <span class="form-note">Your details will prefill the booking form. We aim to reply within one business day.<\/span>
-            </div>
-        </form>
-    </section>
+      </div>
+      <div class="comparison-table-wrapper">
+        <h3>Cost and Impact Comparison</h3>
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Full Time CIO or CISO</th>
+              <th>Vitso Fractional Executive Partner</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Base Compensation</strong></td>
+              <td>$177K to $314K*</td>
+              <td class="highlight">$48K to $82K**</td>
+            </tr>
+            <tr>
+              <td><strong>Benefits and Overhead</strong></td>
+              <td>$53K to $94K (30%)**</td>
+              <td class="highlight">$0</td>
+            </tr>
+            <tr>
+              <td><strong>Total Annual Cost</strong></td>
+              <td>$230K to $408K</td>
+              <td class="highlight">$48K to $82K</td>
+            </tr>
+            <tr>
+              <td><strong>Recruiting Time</strong></td>
+              <td>3 to 6 months</td>
+              <td class="highlight">Immediate</td>
+            </tr>
+            <tr>
+              <td><strong>Executive Impact</strong></td>
+              <td>Technology only focus</td>
+              <td class="highlight">Business strategy, presales, customer audits, partner and vendor governance, RIF and SWOT support</td>
+            </tr>
+            <tr>
+              <td><strong>Multi Discipline</strong></td>
+              <td>Often one role</td>
+              <td class="highlight">Integrated CIO and CISO</td>
+            </tr>
+            <tr>
+              <td><strong>Strategic Focus</strong></td>
+              <td>About 33% of time</td>
+              <td class="highlight">Focused time on strategy</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="table-note">
+          * Glassdoor 2025 CIO range 25th to 75th percentile. ** Benefits overhead based on U.S. Bureau of Labor Statistics average for professional workers. *** Vitso pricing based on list to average rates by engagement and commitment level.
+        </div>
+        <div style="margin-top: .8rem; font-size: .98rem; text-align:center; opacity:.95;">
+          Beyond CIO and CISO coverage, Vitso supports boardroom and customer facing work including presales, implementation, customer audit defense, recruitment, partner and vendor governance, and structured analysis such as RIF and SWOT.
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-        <p>© <span id="yr"></span> Vitso. All rights reserved.</p>
-    </footer>
+  <!-- Free Training Section target ID -->
+  <section class="training-section" id="training">
+    <div class="training-content">
+      <span class="training-badge">Free Resource</span>
+      <h2>Technical HIPAA Training for Builders</h2>
+      <p>This short course covers the practical handling of PHI and PII in modern development and data workflows. It was written for builders and is free to use and adapt.</p>
+      <div class="training-highlights">
+        <div class="training-highlight">Real world scenarios from code, data, and ops</div>
+        <div class="training-highlight">Clear handling patterns and escalation checks</div>
+        <div class="training-highlight">Self contained HTML that runs anywhere</div>
+        <div class="training-highlight">Includes a 29 question knowledge check</div>
+      </div>
+      <div class="training-cta">
+        <a class="btn-training" href="https://vitso-tom.github.io/phi-pii-training/" target="_blank">Launch Training</a>
+        <a class="btn-training" href="https://github.com/vitso-tom/phi-pii-training" target="_blank">View on GitHub</a>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        // Simple year updater
-        document.getElementById('yr').textContent = new Date().getFullYear();
-            // Calendly prefill on contact form submit
-        function buildCalendlyUrl() {
-            const name = (document.getElementById('name')?.value || '').trim();
-            const email = (document.getElementById('email')?.value || '').trim();
-            const company = (document.getElementById('company')?.value || '').trim();
-            const role = (document.getElementById('role')?.value || '').trim();
-            const message = (document.getElementById('message')?.value || '').trim();
-            const params = new URLSearchParams();
-            if (name) params.set('name', name);
-            if (email) params.set('email', email);
-            if (company) params.set('a1', company);
-            if (role) params.set('a2', role);
-            if (message) params.set('a3', message);
-            params.set('hide_gdpr_banner', '1');
-            return 'https://calendly.com/vitso/30min?' + params.toString();
-        }
-        function onContactSubmit(e){
-            if (e) e.preventDefault();
-            const url = buildCalendlyUrl();
-            if (window.Calendly && typeof Calendly.initPopupWidget === 'function') {
-                Calendly.initPopupWidget({ url });
-            } else {
-                window.open(url, '_blank', 'noopener');
-            }
-            return false;
-        }
-        const contactForm = document.getElementById('contactForm');
-        if (contactForm) {
-            contactForm.addEventListener('submit', onContactSubmit);
-        }
-    </script>
+  <!-- Contact / CTA with working anchor and Calendly popup form -->
+  <section class="cta-section" id="contact">
+    <div class="cta-content">
+      <h2>Start a Conversation</h2>
+      <p>Tell us a little about your goals. We will respond quickly and suggest next steps.</p>
+      <div class="contact-options">
+        <div class="contact-card">
+          <h3>Email</h3>
+          <a href="mailto:info@vitsotech.com">info@vitsotech.com</a>
+        </div>
+        <div class="contact-card">
+          <h3>Schedule</h3>
+          <a href="https://calendly.com/vitso/30min" target="_blank" rel="noopener">Book a 30 minute intro</a>
+        </div>
+      </div>
+    </div>
+    <form id="contactForm" class="contact-form">
+      <div class="form-grid">
+        <div>
+          <label for="name">Your Name</label>
+          <input id="name" name="name" type="text" required />
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required />
+        </div>
+        <div>
+          <label for="company">Company</label>
+          <input id="company" name="company" type="text" />
+        </div>
+        <div>
+          <label for="role">Role</label>
+          <input id="role" name="role" type="text" />
+        </div>
+        <div class="full">
+          <label for="message">How can we help?</label>
+          <textarea id="message" name="message" placeholder="Briefly describe your goals or challenges" required></textarea>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button class="btn-submit" type="submit">Schedule 30 minute meeting</button>
+        <span class="form-note">Your details will prefill the booking form. We aim to reply within one business day.</span>
+      </div>
+    </form>
+  </section>
+
+  <footer>
+    <p>© <span id="yr"></span> Vitso. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Update year
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    // Calendly prefill on contact form submit
+    function buildCalendlyUrl() {
+      const name = (document.getElementById('name')?.value || '').trim();
+      const email = (document.getElementById('email')?.value || '').trim();
+      const company = (document.getElementById('company')?.value || '').trim();
+      const role = (document.getElementById('role')?.value || '').trim();
+      const message = (document.getElementById('message')?.value || '').trim();
+      const params = new URLSearchParams();
+      if (name) params.set('name', name);
+      if (email) params.set('email', email);
+      if (company) params.set('a1', company);
+      if (role) params.set('a2', role);
+      if (message) params.set('a3', message);
+      params.set('hide_gdpr_banner', '1');
+      return 'https://calendly.com/vitso/30min?' + params.toString();
+    }
+    function onContactSubmit(e){
+      if (e) e.preventDefault();
+      const url = buildCalendlyUrl();
+      if (window.Calendly && typeof Calendly.initPopupWidget === 'function') {
+        Calendly.initPopupWidget({ url });
+      } else {
+        window.open(url, '_blank', 'noopener');
+      }
+      return false;
+    }
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      contactForm.addEventListener('submit', onContactSubmit);
+    }
+  </script>
 </body>
 </html>
