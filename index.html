@@ -35,14 +35,14 @@
     .hero { min-height: 60vh; background: linear-gradient(135deg, #242424 0%, #334155 50%, #475569 100%); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; color: #fff; text-align: center; padding: 2rem; }
     .hero::before { content: ''; position: absolute; width: 300px; height: 300px; top: 20%; right: 10%; background: radial-gradient(circle, rgba(217, 140, 37, 0.15) 0%, transparent 70%); border-radius: 50%; }
     .hero::after { content: ''; position: absolute; width: 400px; height: 400px; bottom: 10%; left: 5%; background: radial-gradient(circle, rgba(112, 101, 239, 0.15) 0%, transparent 70%); border-radius: 50%; }
-    .hero-content { position:relative; z-index:1; max-width:950px; }
-    .hero h1 { font-size:3.2rem; font-weight:800; margin-bottom:1rem; line-height:1.2; background: linear-gradient(90deg, #D98C25 0%, #f3a952 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .hero .subtitle { font-size:1.3rem; margin-bottom:1.5rem; opacity:.95; line-height:1.6; }
-    .hero-stats { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:1.5rem; align-items:start; margin:1.5rem 0; }
+    .hero-content { position:relative; z-index:1; max-width:1000px; }
+    .hero h1 { font-size:3.8rem; font-weight:800; margin-bottom:1.2rem; line-height:1.2; background: linear-gradient(90deg, #D98C25 0%, #f3a952 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero .subtitle { font-size:1.45rem; margin-bottom:1.5rem; opacity:.95; line-height:1.6; }
+    .hero-stats { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:2rem; align-items:start; margin:2rem 0; }
     .stat { text-align:center; }
-    .stat-label { font-size:1rem; opacity:.95; font-weight:600; }
-    .stat-detail { font-size:.85rem; opacity:.85; margin-top:.2rem; }
-    .hero-cta { display:flex; gap:.8rem; justify-content:center; margin-top:1.35rem; flex-wrap:wrap; }
+    .stat-label { font-size:1.3rem; opacity:.95; font-weight:600; line-height: 1.4; }
+    .stat-detail { font-size:1.1rem; opacity:.85; margin-top:.4rem; line-height: 1.5; }
+    .hero-cta { display:flex; gap:.8rem; justify-content:center; margin-top:2rem; flex-wrap:wrap; }
     .btn-primary, .btn-secondary { background:transparent; color:#fff; padding:.75rem 1.5rem; border:2px solid #fff; border-radius:8px; text-decoration:none; font-weight:600; font-size:1rem; transition:all .25s; display:inline-block; }
     .btn-primary:hover { background:#D98C25; border-color:#D98C25; color:#fff; transform:translateY(-3px); box-shadow:0 12px 30px rgba(217,140,37,.3); }
     .btn-secondary:hover { background:#fff; color:#1e293b; transform:translateY(-3px); box-shadow:0 12px 30px rgba(255,255,255,.2); }
@@ -133,14 +133,13 @@
       .stat-detail { font-size: 0.95rem; }
       .hero-cta { gap: 1rem; margin-top: 1.5rem; }
       .btn-primary, .btn-secondary { padding: 0.85rem 1.75rem; font-size: 1.05rem; min-height: 44px; }
+      .credentials { flex-direction: column; align-items: stretch; max-width: 100%; padding: 0 1rem; }
+      .credential-badge { border-left: none; border-top: 4px solid #D98C25; text-align: center; width: 100%; }
       .efficiency-comparison { grid-template-columns:1fr; gap: 2rem; }
-      .comparison-table-wrapper { padding: 1.5rem 1rem; }
-      .comparison-table { font-size: 0.9rem; display: block; overflow-x: auto; }
-      .comparison-table thead, .comparison-table tbody, .comparison-table tr { display: block; }
-      .comparison-table th, .comparison-table td { display: block; text-align: left; padding: 0.75rem; }
-      .comparison-table th { background: rgba(255,255,255,0.15); font-size: 1rem; }
-      .comparison-table tr { margin-bottom: 1.5rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 0.5rem; }
-      .table-note { font-size: 0.85rem; line-height: 1.6; }
+      .comparison-table-wrapper { padding: 1rem; }
+      .comparison-table-wrapper h3 { font-size: 1.3rem; margin-bottom: 1.5rem; }
+      .comparison-table { display: none; }
+      .table-note { font-size: 0.85rem; line-height: 1.6; padding: 0 0.5rem; }
       .nav-links { display:none; }
       .logo { font-size: 1.5rem; }
       .cta-button { font-size: 0.85rem; padding: 0.5rem 0.9rem; }
@@ -166,8 +165,22 @@
       .contact-card { min-width: auto; width: 100%; }
       .btn-submit { width: 100%; min-height: 48px; font-size: 1.05rem; }
       .btn-training { padding: 0.75rem 1.25rem; min-height: 44px; font-size: 1rem; }
-      .credentials { gap: 1rem; }
-      .credential-badge { font-size: 0.9rem; padding: 0.85rem 1.5rem; }
+    }
+    @media (max-width: 768px) {
+      .comparison-table-wrapper::after {
+        content: '';
+        display: block;
+      }
+    }
+    .mobile-comparison { display: none; }
+    @media (max-width: 768px) {
+      .mobile-comparison { display: block; }
+      .mobile-comparison-item { background: rgba(255,255,255,0.1); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
+      .mobile-comparison-item h4 { font-size: 1.1rem; margin-bottom: 1rem; color: #22c55e; font-weight: 700; }
+      .mobile-comparison-row { display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.15); }
+      .mobile-comparison-row:last-child { border-bottom: none; }
+      .mobile-comparison-label { font-weight: 600; font-size: 0.95rem; flex: 1; }
+      .mobile-comparison-value { font-weight: 500; font-size: 0.95rem; text-align: right; flex: 1; }
     }
   </style>
 </head>
@@ -392,6 +405,70 @@
             </tr>
           </tbody>
         </table>
+        <div class="mobile-comparison">
+          <div class="mobile-comparison-item">
+            <h4>Full-Time CIO/CISO</h4>
+            <div class="mobile-comparison-row">
+              <span class="mobile-comparison-label">Base Compensation</span>
+              <span class="mobile-comparison-value">$177K-$314K</span>
+            </div>
+            <div class="mobile-comparison-row">
+              <span class="mobile-comparison-label">Benefits & Overhead</span>
+              <span class="mobile-comparison-value">$53K-$94K</span>
+            </div>
+            <div class="mobile-comparison-row">
+              <span class="mobile-comparison-label">Total Annual Cost</span>
+              <span class="mobile-comparison-value">$230K-$408K</span>
+            </div>
+            <div class="mobile-comparison-row">
+              <span class="mobile-comparison-label">Recruiting Time</span>
+              <span class="mobile-comparison-value">3-6 months</span>
+            </div>
+            <div class="mobile-comparison-row">
+              <span class="mobile-comparison-label">Flexibility</span>
+              <span class="mobile-comparison-value">Fixed commitment</span>
+            </div>
+            <div class="mobile-comparison-row">
+              <span class="mobile-comparison-label">Scope</span>
+              <span class="mobile-comparison-value">Tech or Security</span>
+            </div>
+            <div class="mobile-comparison-row">
+              <span class="mobile-comparison-label">Strategic Focus</span>
+              <span class="mobile-comparison-value">~33% of time</span>
+            </div>
+          </div>
+          <div class="mobile-comparison-item">
+            <h4>Vitso Fractional ✓</h4>
+            <div class="mobile-comparison-row">
+              <span class="mobile-comparison-label">Base Compensation</span>
+              <span class="mobile-comparison-value">$48K-$82K</span>
+            </div>
+            <div class="mobile-comparison-row">
+              <span class="mobile-comparison-label">Benefits & Overhead</span>
+              <span class="mobile-comparison-value">$0</span>
+            </div>
+            <div class="mobile-comparison-row">
+              <span class="mobile-comparison-label">Total Annual Cost</span>
+              <span class="mobile-comparison-value">$48K-$82K</span>
+            </div>
+            <div class="mobile-comparison-row">
+              <span class="mobile-comparison-label">Recruiting Time</span>
+              <span class="mobile-comparison-value">Immediate</span>
+            </div>
+            <div class="mobile-comparison-row">
+              <span class="mobile-comparison-label">Flexibility</span>
+              <span class="mobile-comparison-value">Scale as needed</span>
+            </div>
+            <div class="mobile-comparison-row">
+              <span class="mobile-comparison-label">Scope</span>
+              <span class="mobile-comparison-value">Tech + Security + Strategy + Sales + Ops</span>
+            </div>
+            <div class="mobile-comparison-row">
+              <span class="mobile-comparison-label">Strategic Focus</span>
+              <span class="mobile-comparison-value">100% of time</span>
+            </div>
+          </div>
+        </div>
         <div class="table-note">
           * Glassdoor 2025: CIO salary range $177K-$314K (25th-75th percentile)<br>
           ** Benefits overhead based on U.S. Bureau of Labor Statistics: ~30% for professional workers<br>
