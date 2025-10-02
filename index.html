@@ -137,9 +137,9 @@
     .hero::before { content: ''; position: absolute; width: 300px; height: 300px; top: 20%; right: 10%; background: radial-gradient(circle, rgba(217, 140, 37, 0.15) 0%, transparent 70%); border-radius: 50%; }
     .hero::after { content: ''; position: absolute; width: 400px; height: 400px; bottom: 10%; left: 5%; background: radial-gradient(circle, rgba(112, 101, 239, 0.15) 0%, transparent 70%); border-radius: 50%; }
     .hero-content { position:relative; z-index:1; max-width:1000px; }
-    .hero h1 { font-size:3.8rem; font-weight:800; margin-bottom:1.2rem; line-height:1.2; background: linear-gradient(90deg, #D98C25 0%, #f3a952 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .hero h2 { font-size:3.4rem; font-weight:800; margin-bottom:1.2rem; line-height:1.2; background: linear-gradient(90deg, #D98C25 0%, #f3a952 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    .hero h1 { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    .hero h2 { font-size:3.4rem; font-weight:800; margin-bottom:1.2rem; line-height:1.2; background: linear-gradient(90deg, #D98C25 0%, #f3a952 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; color: transparent; }
     .hero .subtitle { font-size:1.45rem; margin-bottom:1.5rem; opacity:.95; line-height:1.6; }
     .hero-stats { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:2rem; align-items:start; margin:2rem 0; }
     .stat { text-align:center; }
