@@ -38,7 +38,7 @@
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "Vitso",
-    "description": "ISO, CIO, and CTO services providing executive technology and security leadership",
+    "description": "Fractional CISO, CIO, and CTO services providing executive technology and security leadership",
     "url": "https://vitsotech.com",
     "logo": "https://vitsotech.com/tom-smolinsky.jpg",
     "image": "https://vitsotech.com/tom-smolinsky.jpg",
@@ -59,9 +59,9 @@
       ]
     },
     "serviceType": [
-      "ISO Services",
-      "IO Services", 
-      "TO Services",
+      "Fractional CISO Services",
+      "Fractional CIO Services", 
+      "Fractional CTO Services",
       "Interim Technology Leadership",
       "Cybersecurity Consulting",
       "Compliance Consulting",
@@ -82,7 +82,7 @@
     ]
   }
   </script>
- 
+  
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { width: 100%; margin: 0; padding: 0; overflow-x: hidden; }
@@ -138,6 +138,8 @@
     .hero::after { content: ''; position: absolute; width: 400px; height: 400px; bottom: 10%; left: 5%; background: radial-gradient(circle, rgba(112, 101, 239, 0.15) 0%, transparent 70%); border-radius: 50%; }
     .hero-content { position:relative; z-index:1; max-width:1000px; }
     .hero h1 { font-size:3.8rem; font-weight:800; margin-bottom:1.2rem; line-height:1.2; background: linear-gradient(90deg, #D98C25 0%, #f3a952 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero h2 { font-size:3.4rem; font-weight:800; margin-bottom:1.2rem; line-height:1.2; background: linear-gradient(90deg, #D98C25 0%, #f3a952 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
     .hero .subtitle { font-size:1.45rem; margin-bottom:1.5rem; opacity:.95; line-height:1.6; }
     .hero-stats { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:2rem; align-items:start; margin:2rem 0; }
     .stat { text-align:center; }
@@ -231,6 +233,7 @@
     @media (max-width: 768px){
       .hero { min-height: auto; padding:3rem 1.5rem; }
       .hero h1 { font-size:2rem; line-height: 1.25; }
+      .hero h2 { font-size:1.85rem; line-height: 1.25; }
       .hero .subtitle { font-size:1.1rem; margin-bottom:1rem; line-height: 1.6; }
       .hero-stats { grid-template-columns: 1fr; gap:1rem; margin:1rem 0; }
       .stat-label { font-size: 1.05rem; }
@@ -341,7 +344,7 @@
         <button class="modal-close" onclick="closeAboutModal()" aria-label="Close about modal">&times;</button>
       </div>
       <div class="modal-body">
-        <img src="tom-smolinsky.jpg" alt="Tom Smolinsky - ISO, CIO, and CTO consultant" class="about-photo" />
+        <img src="tom-smolinsky.jpg" alt="Tom Smolinsky - Fractional CISO, CIO, and CTO consultant" class="about-photo" />
         <h2 class="about-title">Tom Smolinsky</h2>
         <p class="about-subtitle">Founder & Principal Consultant, Vitso</p>
         <div class="about-text">
@@ -384,39 +387,36 @@
   </div>
 
   <section class="hero">
-  <div class="hero-content">
-    <!-- SEO H1: indexed by Google, not visually shown -->
-    <h1 class="visually-hidden">Fractional CISO, CIO & CTO Services</h1>
-
-    <!-- Visible hero headline -->
-    <h2>Executive technology and security leadership working in harmony.</h2>
-
-    <!-- Subheadline: secure + forward-looking without hype -->
-    <p class="subtitle">
-      Decades of success in highly regulated industries, securely driving next generation innovation, development, and operations.
-    </p>
-
-    <div class="hero-stats">
-      <div class="stat">
-        <div class="stat-label">100% Strategic Focus</div>
-        <div class="stat-detail">No overhead, focused on value</div>
+    <div class="hero-content">
+      <h1 class="visually-hidden">Fractional CISO, CIO & CTO Leadership That Accelerates Growth</h1>
+      <h2>Executive technology and security leadership working in harmony</h2>
+      <p class="subtitle">Decades of success in highly regulated industries, securely driving next generation innovation, development, and operations.</p>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-label">100% Strategic Focus</div>
+          <div class="stat-detail">No overhead, focused on value</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Integrated Leadership</div>
+          <div class="stat-detail">CIO + CISO + CTO as one</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Right-Sized Security</div>
+          <div class="stat-detail">Pragmatic, not bureaucratic</div>
+        </div>
       </div>
-      <div class="stat">
-        <div class="stat-label">Integrated Leadership</div>
-        <div class="stat-detail">CIO + CISO working as one</div>
-      </div>
-      <div class="stat">
-        <div class="stat-label">Right-Sized Security</div>
-        <div class="stat-detail">Pragmatic, not bureaucratic</div>
+      <div class="hero-cta">
+        <a href="#contact" class="btn-primary">Get Started</a>
+        <a href="#philosophy" class="btn-secondary">Our Approach</a>
       </div>
     </div>
+  </section>
 
-    <div class="hero-cta">
-      <a href="#contact" class="btn-primary">Get Started</a>
-      <a href="#philosophy" class="btn-secondary">Our Approach</a>
-    </div>
-  </div>
-</section>
+  <section class="trust-section">
+    <p>What Clients Say</p>
+    <div class="testimonials" id="testimonialGrid"></div>
+  </section>
+
 
 
   <section class="philosophy" id="philosophy">
