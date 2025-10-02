@@ -15,19 +15,19 @@
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a { text-decoration: none; color: #333; font-weight: 500; transition: color 0.3s; cursor: pointer; }
     .nav-links a:hover { color: #D98C25; }
-    .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 2000; align-items: center; justify-content: center; padding: 1rem; }
+    .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.75); z-index: 2000; align-items: center; justify-content: center; padding: 1rem; backdrop-filter: blur(4px); }
     .modal-overlay.active { display: flex; }
-    .modal-content { background: #fff; border-radius: 16px; max-width: 700px; width: 100%; max-height: 90vh; overflow-y: auto; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
-    .modal-header { padding: 2rem 2rem 1rem; border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; background: #fff; z-index: 1; border-radius: 16px 16px 0 0; }
-    .modal-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; font-size: 1.8rem; color: #6b7280; cursor: pointer; line-height: 1; padding: 0.25rem; transition: color 0.2s; }
+    .modal-content { background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); border-radius: 20px; max-width: 700px; width: 100%; max-height: 90vh; overflow-y: auto; position: relative; box-shadow: 0 25px 50px rgba(0,0,0,0.25); border: 1px solid #e5e7eb; }
+    .modal-header { padding: 2rem 2rem 1rem; border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); z-index: 1; border-radius: 20px 20px 0 0; }
+    .modal-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; font-size: 1.8rem; color: #94a3b8; cursor: pointer; line-height: 1; padding: 0.25rem; transition: color 0.2s; }
     .modal-close:hover { color: #D98C25; }
-    .modal-body { padding: 2rem; }
-    .about-photo { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; margin: 0 auto 1.5rem; display: block; border: 4px solid #D98C25; }
-    .about-title { font-size: 1.8rem; color: #1e293b; margin-bottom: 0.5rem; text-align: center; }
-    .about-subtitle { font-size: 1.1rem; color: #D98C25; margin-bottom: 1.5rem; text-align: center; font-weight: 600; }
-    .about-text { color: #475569; line-height: 1.8; font-size: 1.05rem; }
-    .about-text p { margin-bottom: 1rem; }
-    .about-text strong { color: #1e293b; }
+    .modal-body { padding: 2rem 2.5rem 2.5rem; }
+    .about-photo { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; margin: 0 auto 1.5rem; display: block; border: 3px solid #D98C25; box-shadow: 0 4px 12px rgba(217, 140, 37, 0.2); }
+    .about-title { font-size: 2rem; color: #1e293b; margin-bottom: 0.5rem; text-align: center; font-weight: 600; letter-spacing: -0.02em; }
+    .about-subtitle { font-size: 1.05rem; color: #D98C25; margin-bottom: 2rem; text-align: center; font-weight: 400; font-style: italic; }
+    .about-text { color: #475569; line-height: 1.9; font-size: 1.05rem; }
+    .about-text p { margin-bottom: 1.25rem; }
+    .about-text em { color: #1e293b; font-style: italic; font-weight: 500; }
     .cta-button { background: linear-gradient(135deg, #D98C25 0%, #e09d3a 100%); color: #fff; padding: 0.6rem 1.1rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: transform 0.3s, box-shadow 0.3s; font-size: .95rem; }
     .cta-button:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(217, 140, 37, 0.3); }
     .training-banner { margin-top: 70px; background: linear-gradient(135deg, #242424 0%, #334155 100%); color: #fff; padding: 1.1rem 5%; text-align: center; position: relative; overflow: visible; z-index: 1100; }
@@ -61,9 +61,14 @@
     .btn-primary:hover { background:#D98C25; border-color:#D98C25; color:#fff; transform:translateY(-3px); box-shadow:0 12px 30px rgba(217,140,37,.3); }
     .btn-secondary:hover { background:#fff; color:#1e293b; transform:translateY(-3px); box-shadow:0 12px 30px rgba(255,255,255,.2); }
     .trust-section { padding:3rem 5%; background:#f8fafc; text-align:center; position: relative; z-index: 1; }
-    .trust-section p { color:#475569; font-size:.95rem; margin-bottom:1rem; text-transform:uppercase; letter-spacing:1.5px; }
-    .credentials { display:flex; justify-content:center; gap:2rem; flex-wrap:wrap; max-width: 1100px; margin: 0 auto; }
-    .credential-badge { background:#fff; padding:1rem 2rem; border-radius:8px; font-weight:600; color:#242424; box-shadow:0 2px 10px rgba(0,0,0,.05); border-left:4px solid #D98C25; font-size: 1rem; }
+    .trust-section p { color:#475569; font-size:.95rem; margin-bottom:1rem; text-transform:uppercase; letter-spacing:1.5px; font-weight: 600; }
+    .testimonials { display:grid; grid-template-columns: repeat(3, 1fr); gap:2rem; max-width: 1200px; margin: 0 auto; }
+    .quote { background:#fff; border-radius:16px; padding:2rem; box-shadow:0 2px 10px rgba(0,0,0,.05); transition:all .3s, opacity 0.8s ease; position: relative; border: 1px solid #e5e7eb; min-height: 240px; display: flex; flex-direction: column; justify-content: space-between; opacity: 1; }
+    .quote.fade-out { opacity: 0; transition: opacity 0.8s ease; }
+    .quote::before { content: '"'; font-size: 48px; color: #D98C25; position: absolute; top: 12px; left: 20px; font-family: Georgia, serif; opacity: 0.3; line-height: 1; }
+    .quote:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,.1); }
+    .quote p { margin: 0 0 1.5rem; font-style: italic; line-height: 1.7; color: #334155; font-size: 1.05rem; padding-top: 2rem; }
+    .quote .byline { font-size: .9rem; color: #64748b; font-weight: 500; text-align: right; margin-top: auto; }
     .services { padding:5rem 5%; background:#fff; position: relative; z-index: 1; }
     .section-header { text-align:center; margin-bottom:4rem; max-width: 900px; margin-left: auto; margin-right: auto; }
     .section-header h2 { font-size:2.5rem; color:#1e293b; margin-bottom:1.5rem; }
@@ -149,6 +154,9 @@
       .btn-primary, .btn-secondary { padding: 0.85rem 1.75rem; font-size: 1.05rem; min-height: 44px; }
       .credentials { flex-direction: column; align-items: stretch; max-width: 100%; padding: 0 1rem; }
       .credential-badge { border-left: none; border-top: 4px solid #D98C25; text-align: center; width: 100%; }
+      .testimonials { grid-template-columns: 1fr; gap: 1.5rem; }
+      .quote { min-height: auto; padding: 1.5rem; }
+      .quote p { font-size: 1rem; padding-top: 1.5rem; }
       .efficiency-comparison { grid-template-columns:1fr; gap: 2rem; }
       .comparison-table-wrapper { padding: 1rem; }
       .comparison-table-wrapper h3 { font-size: 1.3rem; margin-bottom: 1.5rem; }
@@ -231,13 +239,13 @@
         <h2 class="about-title">Tom Smolinsky</h2>
         <p class="about-subtitle">Founder & Principal Consultant, Vitso</p>
         <div class="about-text">
-          <p>Tom Smolinsky is a technology and cybersecurity executive with more than 20 years of experience as a <strong>CISO, CIO, and SVP</strong> across both high-technology companies and highly regulated sectors such as healthcare and life sciences. He is the founder of <strong>Vitso</strong>, where he provides executive consulting and fractional leadership for organizations navigating growth, compliance, and digital transformation.</p>
+          <p>Tom Smolinsky is a technology and cybersecurity executive with more than 20 years of experience as a CISO, CIO, and SVP across both high-technology companies and highly regulated sectors such as healthcare and life sciences. He is the founder of <em>Vitso</em>, where he provides executive consulting and fractional leadership for organizations navigating growth, compliance, and digital transformation.</p>
           
-          <p>A CISSP since 2012, Tom is recognized for aligning technology investments with business outcomes and building resilient, secure, and scalable systems. His expertise spans cloud transformation, AI adoption strategies, and M&A integrations, alongside regulatory and compliance frameworks including <strong>HIPAA, SOC 2, NIST 800-171, 21 CFR Part 11, and GxP</strong>.</p>
+          <p>A CISSP since 2012, Tom is recognized for aligning technology investments with business outcomes and building resilient, secure, and scalable systems. His expertise spans cloud transformation, AI adoption strategies, and M&A integrations, alongside regulatory and compliance frameworks including HIPAA, SOC 2, NIST 800-171, 21 CFR Part 11, and GxP.</p>
           
-          <p>Tom's leadership approach focuses on building <strong>right-sized technology organizations</strong> that accelerate time-to-value while creating environments where top talent thrives. He is known for <strong>turning techies into technologists</strong>, fostering cultures that elevate technical teams into strategic business partners. Through Vitso, he brings this approach from his corporate leadership background to a broad range of clients, enabling them to scale with confidence while attracting and retaining the best people.</p>
+          <p>Tom's leadership approach focuses on building right-sized technology organizations that accelerate time-to-value while creating environments where top talent thrives. He is known for <em>turning techies into technologists</em>, fostering cultures that elevate technical teams into strategic business partners. Through Vitso, he brings this approach from his corporate leadership background to a broad range of clients, enabling them to scale with confidence while attracting and retaining the best people.</p>
           
-          <p>At his core, Tom is a <strong>principled technologist</strong>, balancing urgency with governance, enabling innovation without sacrificing security, and delivering strategies that are both visionary and pragmatic.</p>
+          <p>At his core, Tom is a <em>principled technologist</em>, balancing urgency with governance, enabling innovation without sacrificing security, and delivering strategies that are both visionary and pragmatic.</p>
         </div>
       </div>
     </div>
@@ -295,13 +303,8 @@
   </section>
 
   <section class="trust-section">
-    <p>Proven Expertise</p>
-    <div class="credentials">
-      <div class="credential-badge">Industry-Leading Certified Experience</div>
-      <div class="credential-badge">Decades of Accelerated Technology Strategy Success</div>
-      <div class="credential-badge">Proven Leadership in Highly Regulated Industries</div>
-      <div class="credential-badge">Integrated CIO + CISO Approach</div>
-    </div>
+    <p>What Clients Say</p>
+    <div class="testimonials" id="testimonialGrid"></div>
   </section>
 
   <section class="training-section" id="training">
@@ -356,23 +359,23 @@
       <div class="service-card">
         <div class="service-icon">💡</div>
         <h3>Advisory</h3>
-        <p>Strategic guidance for critical technology decisions, vendor selection, security assessments, and compliance initiatives. Get C-level expertise exactly when you need it.</p>
-        <p><strong>Perfect for:</strong> Technology strategy development, vendor evaluations, security roadmaps, compliance planning, executive mentoring and development</p>
+        <p>Strategic guidance for critical technology decisions, vendor selection, security assessments, and compliance initiatives. Get C-level expertise exactly when you need it - from strategy development through hands-on execution support.</p>
+        <p><strong>Perfect for:</strong> Technology strategy development, vendor evaluations and implementation, security roadmaps, compliance planning and audit preparation, GRC tool standup, executive mentoring and development</p>
         <p style="margin-top: .6rem; font-style: italic; color: #475569;">We've successfully mentored technology leaders into executive roles as CIOs and CISOs, helping them develop the strategic thinking and business acumen needed at the C-level.</p>
         <span class="service-tag">Project-Based</span>
       </div>
       <div class="service-card">
         <div class="service-icon">🔄</div>
         <h3>Transition</h3>
-        <p>Interim CIO/CISO leadership during searches, departures, or organizational changes. Maintain momentum and stability through critical transition periods.</p>
-        <p><strong>Ideal for:</strong> Leadership gaps, M&A integration, restructuring, temporary coverage needs</p>
+        <p>Interim CIO/CISO leadership during searches, departures, or organizational changes. Maintain momentum and stability through critical transition periods with hands-on execution of key initiatives.</p>
+        <p><strong>Ideal for:</strong> Leadership gaps, M&A integration, restructuring, temporary coverage needs, audit preparation, compliance certification drives</p>
         <span class="service-tag">3-12 Months</span>
       </div>
       <div class="service-card">
         <div class="service-icon">🎯</div>
         <h3>Fractional</h3>
-        <p>Part-time CIO and CISO working as integrated executive team members. Ongoing strategic leadership, vendor management, team development, and technology oversight.</p>
-        <p><strong>Best for:</strong> Growing companies seeking continuous C-level expertise without full-time executive costs</p>
+        <p>Part-time executive leadership or departmental management with hands-on execution. We operate across the spectrum: board-level strategy, building and managing teams, implementing compliance frameworks, configuring tools, running audits, and delivering projects.</p>
+        <p><strong>Best for:</strong> Companies seeking continuous leadership without full-time executive costs, organizations building or scaling security and compliance programs, teams needing both strategic direction and tactical execution</p>
         <span class="service-tag">Ongoing Partnership</span>
       </div>
     </div>
@@ -399,129 +402,14 @@
           <div class="time-breakdown">
             <div class="time-item"><span class="time-label">Annual Investment</span><span class="time-value">$48K-$82K</span></div>
             <div class="time-item"><span class="time-label">Time to Value</span><span class="time-value">Immediate</span></div>
-            <div class="time-item"><span class="time-label">Scope</span><span class="time-value">C-level + Business Strategy</span></div>
+            <div class="time-item"><span class="time-label">Scope</span><span class="time-value">Strategy + Execution</span></div>
             <div class="time-item"><span class="time-label">Cross-functional Expertise</span><span class="time-value">Tech, Security, Sales, Ops</span></div>
           </div>
         </div>
       </div>
-      <div class="comparison-table-wrapper">
-        <h3>Cost Comparison: Full-Time vs. Fractional</h3>
-        <table class="comparison-table">
-          <thead>
-            <tr>
-              <th></th>
-              <th>Full-Time CIO/CISO</th>
-              <th>Vitso Fractional</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Base Compensation</strong></td>
-              <td>$177K-$314K*</td>
-              <td class="highlight">$48K-$82K***</td>
-            </tr>
-            <tr>
-              <td><strong>Benefits & Overhead</strong></td>
-              <td>$53K-$94K (30%)**</td>
-              <td class="highlight">$0</td>
-            </tr>
-            <tr>
-              <td><strong>Total Annual Cost</strong></td>
-              <td>$230K-$408K</td>
-              <td class="highlight">$48K-$82K</td>
-            </tr>
-            <tr>
-              <td><strong>Recruiting Time</strong></td>
-              <td>3-6 months</td>
-              <td class="highlight">Immediate</td>
-            </tr>
-            <tr>
-              <td><strong>Flexibility</strong></td>
-              <td>Fixed commitment</td>
-              <td class="highlight">Scale as needed</td>
-            </tr>
-            <tr>
-              <td><strong>Scope & Expertise</strong></td>
-              <td>Technology or Security leadership</td>
-              <td class="highlight">Tech + Security + Business Strategy + Pre-Sales + Operations</td>
-            </tr>
-            <tr>
-              <td><strong>Strategic Focus</strong></td>
-              <td>~33% of time</td>
-              <td class="highlight">100% of time</td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="mobile-comparison">
-          <div class="mobile-comparison-item">
-            <h4>Full-Time CIO/CISO</h4>
-            <div class="mobile-comparison-row">
-              <span class="mobile-comparison-label">Base Compensation</span>
-              <span class="mobile-comparison-value">$177K-$314K</span>
-            </div>
-            <div class="mobile-comparison-row">
-              <span class="mobile-comparison-label">Benefits & Overhead</span>
-              <span class="mobile-comparison-value">$53K-$94K</span>
-            </div>
-            <div class="mobile-comparison-row">
-              <span class="mobile-comparison-label">Total Annual Cost</span>
-              <span class="mobile-comparison-value">$230K-$408K</span>
-            </div>
-            <div class="mobile-comparison-row">
-              <span class="mobile-comparison-label">Recruiting Time</span>
-              <span class="mobile-comparison-value">3-6 months</span>
-            </div>
-            <div class="mobile-comparison-row">
-              <span class="mobile-comparison-label">Flexibility</span>
-              <span class="mobile-comparison-value">Fixed commitment</span>
-            </div>
-            <div class="mobile-comparison-row">
-              <span class="mobile-comparison-label">Scope</span>
-              <span class="mobile-comparison-value">Tech or Security</span>
-            </div>
-            <div class="mobile-comparison-row">
-              <span class="mobile-comparison-label">Strategic Focus</span>
-              <span class="mobile-comparison-value">~33% of time</span>
-            </div>
-          </div>
-          <div class="mobile-comparison-item">
-            <h4>Vitso Fractional ✓</h4>
-            <div class="mobile-comparison-row">
-              <span class="mobile-comparison-label">Base Compensation</span>
-              <span class="mobile-comparison-value">$48K-$82K</span>
-            </div>
-            <div class="mobile-comparison-row">
-              <span class="mobile-comparison-label">Benefits & Overhead</span>
-              <span class="mobile-comparison-value">$0</span>
-            </div>
-            <div class="mobile-comparison-row">
-              <span class="mobile-comparison-label">Total Annual Cost</span>
-              <span class="mobile-comparison-value">$48K-$82K</span>
-            </div>
-            <div class="mobile-comparison-row">
-              <span class="mobile-comparison-label">Recruiting Time</span>
-              <span class="mobile-comparison-value">Immediate</span>
-            </div>
-            <div class="mobile-comparison-row">
-              <span class="mobile-comparison-label">Flexibility</span>
-              <span class="mobile-comparison-value">Scale as needed</span>
-            </div>
-            <div class="mobile-comparison-row">
-              <span class="mobile-comparison-label">Scope</span>
-              <span class="mobile-comparison-value">Tech + Security + Strategy + Sales + Ops</span>
-            </div>
-            <div class="mobile-comparison-row">
-              <span class="mobile-comparison-label">Strategic Focus</span>
-              <span class="mobile-comparison-value">100% of time</span>
-            </div>
-          </div>
-        </div>
-        <div class="table-note">
-          * Glassdoor 2025: CIO salary range $177K-$314K (25th-75th percentile)<br>
-          ** Benefits overhead based on U.S. Bureau of Labor Statistics: ~30% for professional workers<br>
-          *** Vitso pricing based on list to average rates depending on engagement and commitment level
-        </div>
-      </div>
+      <p style="margin-top: 2rem; font-size: .9rem; opacity: .85; text-align: center; max-width: 850px; margin-left: auto; margin-right: auto;">
+        * Cost ranges based on Glassdoor 2025 CIO/CISO salary data ($177K-$314K base) plus 30% benefits overhead (U.S. Bureau of Labor Statistics). Vitso pricing reflects list to average rates depending on engagement scope and commitment level.
+      </p>
     </div>
   </section>
 
@@ -641,6 +529,60 @@
     if (contactForm) {
       contactForm.addEventListener('submit', onContactSubmit);
     }
+    
+    // Testimonial Rotation
+    (function () {
+      const quotes = [
+        { text: "Vitso brings disparate teams together and finds a path to yes. Culture improves and results follow.", by: "Senior Healthcare Product Leader" },
+        { text: "Vitso moves programs past roadblocks that seemed impassable.", by: "Global Chief Medical Officer" },
+        { text: "Vitso runs 24/7 customer-facing cloud operations at scale and steadies board conversations.", by: "President and CEO" },
+        { text: "Exemplary, business-driven leadership for IT and security in large-scale SaaS. Would engage Vitso in an instant.", by: "Strategic Advisor" },
+        { text: "Vitso spots inefficiencies fast and sets focused execution. A leader people want to follow.", by: "Senior Network Security Engineer" },
+        { text: "Turned a disjointed group into a coherent organization with realistic plans and cost control.", by: "Chief Information Security Officer (CISO)" },
+        { text: "Transformed Operations into a well-oiled machine and delivered under demanding circumstances.", by: "Former Director of Human Resources" },
+        { text: "Cost-efficient architectures and strong hiring built lasting capability.", by: "Solutions Consultant" },
+        { text: "Forward-thinking leadership that improves performance while lowering cost.", by: "Security Professional (CISSP)" },
+        { text: "Clear vision, real strategy, and a roadmap communicated so everyone can act.", by: "Director of Site Reliability Engineering" },
+        { text: "Introduced smart processes; design choices and vendor negotiations lowered expenses.", by: "Senior Cloud Engineer" },
+        { text: "Balances tactical and strategic needs; a partner you can trust.", by: "Chief Information Security Officer (CISO)" }
+      ];
+      
+      const grid = document.getElementById("testimonialGrid");
+      if (!grid) return;
+
+      function cardHTML(q) {
+        return `<div class="quote" style="opacity: 0;"><p>${q.text}</p><div class="byline">${q.by}</div></div>`;
+      }
+
+      let start = 0;
+      function render() {
+        // Fade out current cards
+        const currentCards = grid.querySelectorAll('.quote');
+        currentCards.forEach(card => card.classList.add('fade-out'));
+        
+        // Wait for fade out, then update content
+        setTimeout(() => {
+          grid.innerHTML = "";
+          for (let i = 0; i < 3; i++) {
+            const q = quotes[(start + i) % quotes.length];
+            grid.insertAdjacentHTML("beforeend", cardHTML(q));
+          }
+          
+          // Trigger fade in after cards are added to DOM
+          setTimeout(() => {
+            const newCards = grid.querySelectorAll('.quote');
+            newCards.forEach(card => card.style.opacity = '1');
+          }, 50);
+        }, 800);
+      }
+
+      render();
+      let interval = setInterval(() => { start = (start + 3) % quotes.length; render(); }, 9000);
+      grid.addEventListener("mouseenter", () => clearInterval(interval));
+      grid.addEventListener("mouseleave", () => {
+        interval = setInterval(() => { start = (start + 3) % quotes.length; render(); }, 9000);
+      });
+    })();
   </script>
 </body>
 </html>
