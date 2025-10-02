@@ -3,9 +3,86 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <title>Vitso | Executive Technology Leadership</title>
+  
+  <!-- SEO: Optimized Title Tag -->
+  <title>Fractional CISO | Fractional CIO | Fractional CTO - Vitso</title>
+  
+  <!-- SEO: Meta Description -->
+  <meta name="description" content="Executive fractional CISO, CIO, and CTO services. Part-time technology and security leadership for growing companies. 20+ years experience in healthcare, compliance, and cloud transformation." />
+  
+  <!-- SEO: Keywords (less important but still useful) -->
+  <meta name="keywords" content="fractional CISO, fractional CIO, fractional CTO, part-time CISO, interim CIO, cybersecurity consulting, technology leadership, compliance consulting, HIPAA, SOC 2" />
+  
+  <!-- SEO: Open Graph Tags for Social Media -->
+  <meta property="og:title" content="Fractional CISO | Fractional CIO | Fractional CTO - Vitso" />
+  <meta property="og:description" content="Executive fractional technology and security leadership. Strategic expertise without full-time costs." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vitsotech.com" />
+  <meta property="og:image" content="https://vitsotech.com/tom-smolinsky.jpg" />
+  
+  <!-- SEO: Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Fractional CISO | Fractional CIO | Fractional CTO - Vitso" />
+  <meta name="twitter:description" content="Executive fractional technology and security leadership. Strategic expertise without full-time costs." />
+  
+  <!-- SEO: Canonical URL -->
+  <link rel="canonical" href="https://vitsotech.com" />
+  
+  <!-- Calendly -->
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  
+  <!-- SEO: Structured Data (Schema.org) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Vitso",
+    "description": "Fractional CISO, CIO, and CTO services providing executive technology and security leadership",
+    "url": "https://vitsotech.com",
+    "logo": "https://vitsotech.com/tom-smolinsky.jpg",
+    "image": "https://vitsotech.com/tom-smolinsky.jpg",
+    "telephone": "+1-617-595-8146",
+    "priceRange": "$$$",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "US"
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "Tom Smolinsky",
+      "jobTitle": "Founder & Principal Consultant",
+      "description": "CISSP-certified technology and cybersecurity executive with 20+ years as CISO, CIO, and SVP",
+      "image": "https://vitsotech.com/tom-smolinsky.jpg",
+      "sameAs": [
+        "https://www.linkedin.com/company/vitso"
+      ]
+    },
+    "serviceType": [
+      "Fractional CISO Services",
+      "Fractional CIO Services", 
+      "Fractional CTO Services",
+      "Interim Technology Leadership",
+      "Cybersecurity Consulting",
+      "Compliance Consulting",
+      "Technology Strategy"
+    ],
+    "areaServed": {
+      "@type": "Country",
+      "name": "United States"
+    },
+    "knowsAbout": [
+      "Cybersecurity",
+      "HIPAA Compliance",
+      "SOC 2",
+      "Cloud Transformation",
+      "Technology Leadership",
+      "Information Security",
+      "GRC"
+    ]
+  }
+  </script>
+  
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { width: 100%; margin: 0; padding: 0; overflow-x: hidden; }
@@ -15,6 +92,16 @@
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a { text-decoration: none; color: #333; font-weight: 500; transition: color 0.3s; cursor: pointer; }
     .nav-links a:hover { color: #D98C25; }
+    .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
+    .hamburger span { width: 25px; height: 3px; background: #333; transition: all 0.3s; border-radius: 2px; }
+    .mobile-menu { display: none; position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: #fff; box-shadow: -2px 0 10px rgba(0,0,0,0.1); z-index: 1300; transition: right 0.3s ease; padding: 5rem 2rem 2rem; }
+    .mobile-menu.active { right: 0; }
+    .mobile-menu-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1250; }
+    .mobile-menu-overlay.active { display: block; }
+    .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; }
+    .mobile-menu ul li a { text-decoration: none; color: #333; font-weight: 500; font-size: 1.1rem; display: block; padding: 0.5rem 0; transition: color 0.3s; }
+    .mobile-menu ul li a:hover { color: #D98C25; }
+    .mobile-menu-close { position: absolute; top: 1.5rem; right: 2rem; background: none; border: none; font-size: 2rem; color: #333; cursor: pointer; line-height: 1; }
     .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.75); z-index: 2000; align-items: center; justify-content: center; padding: 1rem; backdrop-filter: blur(4px); }
     .modal-overlay.active { display: flex; }
     .modal-content { background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); border-radius: 20px; max-width: 700px; width: 100%; max-height: 90vh; overflow-y: auto; position: relative; box-shadow: 0 25px 50px rgba(0,0,0,0.25); border: 1px solid #e5e7eb; }
@@ -112,17 +199,15 @@
     .comparison-table tr:last-child td { border-bottom:none; }
     .comparison-table .highlight { color:#22c55e; font-weight:700; }
     .table-note { margin-top:1rem; font-size:.9rem; opacity:.85; text-align:center; }
-    .training-section { padding:4rem 5%; background:#fef3e2; position: relative; z-index: 1; }
-    .training-content { max-width:1000px; margin:0 auto; background: #ffffff; border-radius:20px; padding:2.4rem; border:3px solid #D98C25; position:relative; overflow:hidden; box-shadow: 0 4px 20px rgba(217, 140, 37, 0.15); }
-    .training-badge { display:inline-block; background:#D98C25; color:#fff; padding:.45rem 1.2rem; border-radius:30px; font-weight:700; font-size:.9rem; margin-bottom:1rem; letter-spacing:.6px; }
-    .training-content h2 { font-size:2.2rem; color:#242424; margin-bottom:1rem; }
-    .training-content p { color:#334155; line-height:1.9; margin-bottom:.8rem; font-size:1.15rem; }
-    .training-highlights { display:grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap:1rem; margin:1.6rem 0; }
-    .training-highlight { display:flex; align-items:center; gap:.6rem; background:#fff; padding:1rem; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.05); font-size: 1.05rem; line-height: 1.6; }
-    .training-highlight::before { content:'✓'; color:#D98C25; font-weight:700; font-size:1.2rem; }
-    .training-cta { display:flex; gap:.8rem; margin-top:1.4rem; flex-wrap:wrap; }
-    .btn-training { background:#D98C25; color:#fff; padding:.8rem 1.4rem; border-radius:8px; text-decoration:none; font-weight:600; font-size:1rem; transition:all .25s; display:inline-flex; align-items:center; gap:.5rem; border:1px solid transparent; }
-    .btn-training:hover { background:#c27a1f; transform:translateY(-2px); box-shadow:0 10px 25px rgba(217,140,37,0.28); }
+    .training-section { padding:3rem 5%; background:#fef3e2; position: relative; z-index: 1; }
+    .training-content-compact { max-width:1000px; margin:0 auto; background: #ffffff; border-radius:16px; padding:2rem; border:2px solid #D98C25; display:flex; gap:2rem; align-items:center; box-shadow: 0 4px 12px rgba(217, 140, 37, 0.12); }
+    .training-text { flex:1; }
+    .training-badge { display:inline-block; background:#D98C25; color:#fff; padding:.3rem .9rem; border-radius:20px; font-weight:700; font-size:.8rem; margin-bottom:.7rem; letter-spacing:.5px; }
+    .training-content-compact h2 { font-size:1.6rem; color:#242424; margin-bottom:.6rem; }
+    .training-content-compact p { color:#334155; line-height:1.7; font-size:1rem; margin:0; }
+    .training-cta-compact { display:flex; flex-direction:column; gap:.7rem; min-width:180px; }
+    .btn-training { background:#D98C25; color:#fff; padding:.7rem 1.2rem; border-radius:8px; text-decoration:none; font-weight:600; font-size:.95rem; transition:all .25s; display:inline-flex; align-items:center; justify-content:center; gap:.4rem; border:1px solid transparent; text-align:center; }
+    .btn-training:hover { background:#c27a1f; transform:translateY(-2px); box-shadow:0 8px 20px rgba(217,140,37,0.25); }
     .cta-section { padding:5rem 5%; background:#f8fafc; text-align:center; position: relative; z-index: 1; }
     .cta-content { max-width:880px; margin:0 auto; }
     .cta-content h2 { font-size:2.5rem; color:#1e293b; margin-bottom:1.5rem; }
@@ -163,6 +248,8 @@
       .comparison-table { display: none; }
       .table-note { font-size: 0.85rem; line-height: 1.6; padding: 0 0.5rem; }
       .nav-links { display:none; }
+      .hamburger { display: flex; }
+      .mobile-menu { display: block; }
       .logo { font-size: 1.5rem; }
       .cta-button { font-size: 0.85rem; padding: 0.5rem 0.9rem; }
       .training-banner { padding: 1rem 4%; }
@@ -222,20 +309,39 @@
       <li><a href="#training">Free Training</a></li>
       <li><a href="#philosophy">Approach</a></li>
       <li><a href="#services">Services</a></li>
+      <li><a href="resources.html">Resources</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+    <div class="hamburger" onclick="toggleMobileMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
     <a href="#contact" class="cta-button">Schedule Consultation</a>
   </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" onclick="closeMobileMenu()">&times;</button>
+    <ul>
+      <li><a onclick="openAboutModal(); closeMobileMenu();">About</a></li>
+      <li><a href="#training" onclick="closeMobileMenu()">Free Training</a></li>
+      <li><a href="#philosophy" onclick="closeMobileMenu()">Approach</a></li>
+      <li><a href="#services" onclick="closeMobileMenu()">Services</a></li>
+      <li><a href="resources.html" onclick="closeMobileMenu()">Resources</a></li>
+      <li><a href="#contact" onclick="closeMobileMenu()">Contact</a></li>
+    </ul>
+  </div>
 
   <!-- About Modal -->
   <div id="aboutModal" class="modal-overlay" onclick="closeAboutModal(event)">
     <div class="modal-content" onclick="event.stopPropagation()">
       <div class="modal-header">
-        <button class="modal-close" onclick="closeAboutModal()">&times;</button>
+        <button class="modal-close" onclick="closeAboutModal()" aria-label="Close about modal">&times;</button>
       </div>
       <div class="modal-body">
-        <!-- Replace 'your-photo.jpg' with your actual image URL -->
-        <img src="tom-smolinsky.jpg" alt="Tom Smolinsky" class="about-photo" />
+        <img src="tom-smolinsky.jpg" alt="Tom Smolinsky - Fractional CISO, CIO, and CTO consultant" class="about-photo" />
         <h2 class="about-title">Tom Smolinsky</h2>
         <p class="about-subtitle">Founder & Principal Consultant, Vitso</p>
         <div class="about-text">
@@ -254,8 +360,8 @@
   <div class="training-banner">
     <div class="training-banner-title">🎓 FREE TRAINING: Technical HIPAA Training for Builders</div>
     <div class="training-banner-buttons">
-      <a href="https://vitso-tom.github.io/phi-pii-training/" target="_blank" class="training-banner-btn">🚀 Launch Training</a>
-      <a href="https://github.com/vitso-tom/phi-pii-training" target="_blank" class="training-banner-btn">📦 View on GitHub</a>
+      <a href="https://vitso-tom.github.io/phi-pii-training/" target="_blank" rel="noopener" class="training-banner-btn">🚀 Launch Training</a>
+      <a href="https://github.com/vitso-tom/phi-pii-training" target="_blank" rel="noopener" class="training-banner-btn">📦 View on GitHub</a>
     </div>
     <div style="margin-top: 0.75rem;">
       <span class="training-hover">
@@ -279,8 +385,8 @@
 
   <section class="hero">
     <div class="hero-content">
-      <h1>Technology Leadership That<br />Accelerates Your Business</h1>
-      <p class="subtitle">Executive technology and business leadership working in lock-step. Decades of experience in high-regulation industries, delivering security that enables rather than blocks.</p>
+      <h1>Fractional CISO, CIO & CTO<br />Leadership That Accelerates Growth</h1>
+      <p class="subtitle">Executive technology and security leadership working in lock-step. Decades of experience in high-regulation industries, delivering security that enables rather than blocks.</p>
       <div class="hero-stats">
         <div class="stat">
           <div class="stat-label">100% Strategic Focus</div>
@@ -307,27 +413,7 @@
     <div class="testimonials" id="testimonialGrid"></div>
   </section>
 
-  <section class="training-section" id="training">
-    <div class="training-content">
-      <span class="training-badge">FREE RESOURCE</span>
-      <h2>Technical HIPAA Training for Builders</h2>
-      <p>Most PHI and PII training is written for clinical and administrative audiences. Technical teams face different risks. Data leaks through logs, traces, analytics, test fixtures, feature flags, migrations, and tickets.</p>
-      <p>We built this course to meet builders where they work. It explains when "safe" values become regulated in context, how to prevent exposure in everyday workflows, and what to do if something slips through. It is free, remixable, and includes a 29-question check to confirm understanding.</p>
-      <div class="training-highlights">
-        <div class="training-highlight">Purpose-built for developers, SREs, data engineers, and product</div>
-        <div class="training-highlight">Real technical scenarios with do-this-now guidance</div>
-        <div class="training-highlight">Clear handling patterns and simple escalation checklists</div>
-        <div class="training-highlight">Self-contained HTML you can run and adapt</div>
-      </div>
-      <div class="training-cta">
-        <a href="https://vitso-tom.github.io/phi-pii-training/" target="_blank" class="btn-training">🚀 Launch Training</a>
-        <a href="https://github.com/vitso-tom/phi-pii-training" target="_blank" class="btn-training">📦 View on GitHub</a>
-      </div>
-      <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #475569;">
-        Open source licensed: Code (MIT), Content (CC BY 4.0). Free to use, adapt, and share with attribution to Vitso.
-      </p>
-    </div>
-  </section>
+
 
   <section class="philosophy" id="philosophy">
     <div class="philosophy-content">
@@ -340,7 +426,7 @@
         </div>
         <div class="philosophy-card">
           <h3>Security That Accelerates</h3>
-          <p>Builders drive innovation (the Id), compliance sets boundaries (the Super Ego), and integrated technology and security operations strike the critical balance (the Ego) that makes both fully effective. When these forces work together, security becomes an enabler rather than a blocker.</p>
+          <p>Builders drive innovation (the Id), compliance sets boundaries (the Super Ego), and integrated technology and security operations strike the critical balance (the Ego) that brings it all together. When these forces work together, security happens automatically and compliance flows naturally.</p>
         </div>
         <div class="philosophy-card">
           <h3>Right-Sized for Your Reality</h3>
@@ -413,6 +499,20 @@
     </div>
   </section>
 
+  <section class="training-section" id="training">
+    <div class="training-content-compact">
+      <div class="training-text">
+        <span class="training-badge">FREE RESOURCE</span>
+        <h2>Technical HIPAA Training for Builders</h2>
+        <p>Purpose-built for developers, SREs, and data engineers. Real technical scenarios with practical guidance on handling PHI/PII in logs, traces, analytics, and everyday workflows. Self-contained HTML you can run and adapt. Open source (MIT/CC BY 4.0).</p>
+      </div>
+      <div class="training-cta-compact">
+        <a href="https://vitso-tom.github.io/phi-pii-training/" target="_blank" rel="noopener" class="btn-training">🚀 Launch Training</a>
+        <a href="https://github.com/vitso-tom/phi-pii-training" target="_blank" rel="noopener" class="btn-training">📦 View on GitHub</a>
+      </div>
+    </div>
+  </section>
+
   <section class="cta-section" id="contact">
     <div class="cta-content">
       <h2>Ready to Elevate Your Technology Strategy?</h2>
@@ -432,11 +532,11 @@
       <div class="form-grid">
         <div>
           <label for="name">Your Name</label>
-          <input id="name" name="name" type="text" required />
+          <input id="name" name="name" type="text" required aria-required="true" />
         </div>
         <div>
           <label for="email">Email</label>
-          <input id="email" name="email" type="email" required />
+          <input id="email" name="email" type="email" required aria-required="true" />
         </div>
         <div>
           <label for="company">Company</label>
@@ -448,7 +548,7 @@
         </div>
         <div class="full">
           <label for="message">How can we help?</label>
-          <textarea id="message" name="message" placeholder="Briefly describe your goals or challenges" required></textarea>
+          <textarea id="message" name="message" placeholder="Briefly describe your goals or challenges" required aria-required="true"></textarea>
         </div>
       </div>
       <div class="form-actions">
@@ -465,6 +565,19 @@
 
   <script>
     document.getElementById('yr').textContent = new Date().getFullYear();
+    
+    // Mobile Menu Functions
+    function toggleMobileMenu() {
+      document.getElementById('mobileMenu').classList.toggle('active');
+      document.getElementById('mobileMenuOverlay').classList.toggle('active');
+      document.body.style.overflow = document.body.style.overflow === 'hidden' ? '' : 'hidden';
+    }
+    
+    function closeMobileMenu() {
+      document.getElementById('mobileMenu').classList.remove('active');
+      document.getElementById('mobileMenuOverlay').classList.remove('active');
+      document.body.style.overflow = '';
+    }
     
     // About Modal Functions
     function openAboutModal() {
