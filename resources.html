@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  
+  <title>Resources & Insights - Vitso | Free HIPAA Training & Articles</title>
+  
+  <meta name="description" content="Free resources from Vitso: Technical HIPAA training for builders, articles on fractional leadership, security, compliance, and technology strategy.">
+  
+  <meta name="keywords" content="HIPAA training, PHI training, technical compliance, fractional CISO, security articles, healthcare technology">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Resources & Insights - Vitso">
+  <meta property="og:description" content="Free technical HIPAA training for builders and insights on security, compliance, and technology leadership.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://vitsotech.com/resources.html">
+  
+  <link rel="canonical" href="https://vitsotech.com/resources.html">
+
+  <style>
+    :root {
+      --bg-main: #0F1214;
+      --bg-alt: #181D21;
+      --bg-light: #1F252A;
+      --text-main: #F5F5F3;
+      --text-muted: #A3A7AB;
+      --accent: #C1A875;
+      --accent-soft: #E1D2AF;
+      --border-soft: #2A3137;
+      --max-width: 1120px;
+      --radius-lg: 14px;
+      --radius-md: 10px;
+      --shadow-soft: 0 16px 40px rgba(0, 0, 0, 0.45);
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(to bottom, rgba(15,18,20,0.95), rgba(15,18,20,0.8), transparent);
+      border-bottom: 1px solid rgba(255,255,255,0.02);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 0;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+
+    .brand {
+      font-size: 1.2rem;
+      font-weight: 630;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .brand-tag {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links a {
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text-main);
+    }
+
+    .nav-cta a {
+      font-size: 0.92rem;
+      padding: 0.5rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid var(--accent-soft);
+      background: rgba(193,168,117,0.08);
+      color: var(--accent-soft);
+      transition: background 0.2s;
+    }
+
+    .nav-cta a:hover {
+      background: rgba(193,168,117,0.16);
+    }
+
+    /* Hamburger Menu */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: var(--text-main);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .mobile-menu-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 150;
+    }
+
+    .mobile-menu-overlay.active {
+      display: block;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 280px;
+      height: 100vh;
+      background: var(--bg-alt);
+      box-shadow: -2px 0 20px rgba(0,0,0,0.3);
+      z-index: 200;
+      transition: right 0.3s ease;
+      padding: 5rem 2rem 2rem;
+    }
+
+    .mobile-menu.active {
+      right: 0;
+    }
+
+    .mobile-menu ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .mobile-menu ul li a {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      display: block;
+      padding: 0.5rem 0;
+      transition: color 0.2s;
+    }
+
+    .mobile-menu ul li a:hover {
+      color: var(--accent-soft);
+    }
+
+    .mobile-menu-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    /* Page Hero */
+    .page-hero {
+      padding: 3rem 0 2rem;
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .page-hero-inner {
+      max-width: 700px;
+    }
+
+    .page-hero .section-label {
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-soft);
+      margin-bottom: 0.6rem;
+    }
+
+    .page-hero h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .page-hero p {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* Section */
+    section {
+      padding: 3rem 0;
+    }
+
+    .section-label {
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-soft);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      max-width: 40rem;
+    }
+
+    /* Featured Training Card */
+    .featured-training {
+      background: linear-gradient(135deg, #1E242A, #161A20);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--accent);
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .featured-training-content h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .featured-training-content .badge {
+      background: var(--accent);
+      color: var(--bg-main);
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .featured-training-content .badge-open {
+      background: transparent;
+      border: 1px solid var(--accent-soft);
+      color: var(--accent-soft);
+    }
+
+    .featured-training-content > p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      line-height: 1.7;
+    }
+
+    .training-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .training-features span {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .training-features span::before {
+      content: '✓';
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .featured-training-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      min-width: 180px;
+    }
+
+    .btn-primary {
+      background-color: var(--accent);
+      color: var(--bg-main);
+      border-radius: 999px;
+      padding: 0.7rem 1.5rem;
+      border: none;
+      font-size: 0.95rem;
+      font-weight: 550;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      text-align: center;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(193,168,117,0.25);
+    }
+
+    .btn-secondary {
+      border-radius: 999px;
+      padding: 0.7rem 1.5rem;
+      border: 1px solid var(--border-soft);
+      background-color: rgba(24,29,33,0.85);
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      text-align: center;
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--bg-light);
+      color: var(--text-main);
+    }
+
+    /* Articles Section */
+    .articles-section {
+      border-top: 1px solid var(--border-soft);
+    }
+
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .article-card {
+      background: var(--bg-alt);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-soft);
+      padding: 1.5rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .article-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .article-card .article-date {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+
+    .article-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+
+    .article-card h3 a {
+      transition: color 0.2s;
+    }
+
+    .article-card h3 a:hover {
+      color: var(--accent-soft);
+    }
+
+    .article-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+    }
+
+    .article-card .read-more {
+      font-size: 0.85rem;
+      color: var(--accent-soft);
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .article-card .read-more:hover {
+      color: var(--accent);
+    }
+
+    /* Coming soon state */
+    .article-card.coming-soon {
+      opacity: 0.7;
+    }
+
+    .article-card.coming-soon h3 {
+      color: var(--text-muted);
+    }
+
+    /* Empty state */
+    .articles-empty {
+      text-align: center;
+      padding: 3rem 2rem;
+      color: var(--text-muted);
+      background: var(--bg-alt);
+      border-radius: var(--radius-md);
+      border: 1px dashed var(--border-soft);
+    }
+
+    .articles-empty p {
+      font-size: 0.95rem;
+    }
+
+    /* Newsletter / CTA */
+    .newsletter-band {
+      background: var(--bg-alt);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-soft);
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .newsletter-band h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .newsletter-band p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .newsletter-band .btn-secondary {
+      white-space: nowrap;
+    }
+
+    /* Footer */
+    footer {
+      padding: 1.5rem 0 2rem 0;
+      border-top: 1px solid var(--border-soft);
+      margin-top: 3rem;
+      color: var(--text-muted);
+      font-size: 0.84rem;
+    }
+
+    footer .footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    footer .footer-links {
+      display: flex;
+      gap: 1.25rem;
+    }
+
+    footer .footer-links a {
+      transition: color 0.2s;
+    }
+
+    footer .footer-links a:hover {
+      color: var(--text-main);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .featured-training {
+        grid-template-columns: 1fr;
+      }
+      
+      .featured-training-actions {
+        flex-direction: row;
+        width: 100%;
+      }
+      
+      .articles-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+      }
+      .nav-cta {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .mobile-menu {
+        display: block;
+      }
+      
+      .page-hero h1 {
+        font-size: 1.8rem;
+      }
+      
+      .featured-training {
+        padding: 1.5rem;
+      }
+      
+      .featured-training-content h2 {
+        font-size: 1.2rem;
+      }
+      
+      .training-features {
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+      
+      .featured-training-actions {
+        flex-direction: column;
+      }
+      
+      .newsletter-band {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="container">
+      <div class="nav">
+        <a href="index.html" class="nav-left">
+          <div class="brand">VITSO</div>
+          <div class="brand-tag">Security & Technology Advisory</div>
+        </a>
+        <nav class="nav-links">
+          <a href="index.html#services">Services</a>
+          <a href="resources.html" class="active">Resources</a>
+          <a href="index.html#about">About</a>
+          <a href="index.html#contact">Contact</a>
+        </nav>
+        <div class="hamburger" onclick="toggleMobileMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="nav-cta">
+          <a href="index.html#contact">Schedule consultation</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" onclick="closeMobileMenu()">&times;</button>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#services" onclick="closeMobileMenu()">Services</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="index.html#about" onclick="closeMobileMenu()">About</a></li>
+      <li><a href="index.html#contact" onclick="closeMobileMenu()">Contact</a></li>
+    </ul>
+  </div>
+
+  <main>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero-inner">
+          <div class="section-label">Resources</div>
+          <h1>Training & Insights</h1>
+          <p>Free tools, practical guidance, and perspectives on security, compliance, and building technology organizations that scale.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Training -->
+    <section>
+      <div class="container">
+        <div class="featured-training">
+          <div class="featured-training-content">
+            <h2>
+              Technical HIPAA Training for Builders
+              <span class="badge">Free</span>
+              <span class="badge badge-open">Open Source</span>
+            </h2>
+            <p>
+              Purpose-built for developers, SREs, data engineers, and product teams. Covers how PHI leaks through logs, traces, analytics, test fixtures, and tickets—and what to do about it.
+            </p>
+            <div class="training-features">
+              <span>Real technical scenarios</span>
+              <span>34-question assessment</span>
+              <span>Self-contained HTML</span>
+              <span>MIT / CC BY 4.0 licensed</span>
+            </div>
+          </div>
+          <div class="featured-training-actions">
+            <a href="https://vitso-tom.github.io/phi-pii-training/" target="_blank" rel="noopener" class="btn-primary">🚀 Launch Training</a>
+            <a href="https://github.com/vitso-tom/phi-pii-training" target="_blank" rel="noopener" class="btn-secondary">📦 View on GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Articles -->
+    <section class="articles-section">
+      <div class="container">
+        <div class="section-label">Articles & Insights</div>
+        <h2 class="section-title">Perspectives on security, leadership, and building technology teams</h2>
+        <p class="section-subtitle">
+          Practical guidance drawn from two decades of CISO, CIO, and CTO work in healthcare, SaaS, and regulated environments.
+        </p>
+
+        <div class="articles-grid">
+          <!-- 
+          ===========================================
+          TEMPLATE FOR ADDING NEW ARTICLES
+          ===========================================
+          Copy this block and update the date, title, excerpt, and link:
+          
+          <div class="article-card">
+            <div class="article-date">January 15, 2025</div>
+            <h3><a href="articles/your-article.html">Your Article Title Here</a></h3>
+            <p>Brief excerpt or summary. Keep it to 2-3 sentences that capture the main point.</p>
+            <a href="articles/your-article.html" class="read-more">Read more →</a>
+          </div>
+          =========================================== 
+          -->
+
+          <div class="article-card coming-soon">
+            <div class="article-date">Coming Soon</div>
+            <h3>When to Hire a Fractional CISO vs. Full-Time</h3>
+            <p>Understanding the right engagement model for your stage, budget, and security needs. Decision criteria that actually matter.</p>
+            <span class="read-more">Coming soon</span>
+          </div>
+
+          <div class="article-card coming-soon">
+            <div class="article-date">Coming Soon</div>
+            <h3>AI Governance That Doesn't Kill Velocity</h3>
+            <p>How to enable AI adoption for your engineering teams while maintaining trust with patients, customers, and regulators.</p>
+            <span class="read-more">Coming soon</span>
+          </div>
+
+        </div>
+
+        <!-- Newsletter / LinkedIn CTA -->
+        <div class="newsletter-band">
+          <div>
+            <h3>Stay updated</h3>
+            <p>Follow along on LinkedIn for new articles and insights.</p>
+          </div>
+          <a href="https://www.linkedin.com/in/thomassmolinsky" target="_blank" rel="noopener" class="btn-secondary">💼 Follow on LinkedIn</a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div>© <span id="year"></span> Vitso. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  function toggleMobileMenu() {
+    document.getElementById('mobileMenu').classList.toggle('active');
+    document.getElementById('mobileMenuOverlay').classList.toggle('active');
+    document.body.style.overflow = document.body.style.overflow === 'hidden' ? '' : 'hidden';
+  }
+
+  function closeMobileMenu() {
+    document.getElementById('mobileMenu').classList.remove('active');
+    document.getElementById('mobileMenuOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+</script>
+
+</body>
+</html>
