@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Smolinsky;Tom;;;
+FN:Tom Smolinsky
+ORG:Vitso
+TITLE:Founder & Principal
+TEL;TYPE=CELL:+16175958146
+EMAIL:tom@vitsotech.com
+URL:https://www.vitsotech.com
+URL:https://www.linkedin.com/in/thomassmolinsky
+PHOTO;TYPE=JPEG;VALUE=URI:https://vitsotech.com/tom-smolinsky.jpg
+END:VCARD
