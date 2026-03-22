@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Vibe Coders Are Here (And We're Not Ready) | Vitso</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+  :root {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #242424;
+    --bg-tertiary: #2e2e2e;
+    --gold: #c4a44a;
+    --gold-dim: #8a7535;
+    --gold-bright: #d4b85a;
+    --gold-bg: rgba(196, 164, 74, 0.08);
+    --gold-border: rgba(196, 164, 74, 0.25);
+    --text-primary: #e8e6e0;
+    --text-secondary: #a8a6a0;
+    --text-tertiary: #706e68;
+    --teal: #1D9E75;
+    --teal-dim: rgba(29, 158, 117, 0.15);
+    --blue: #378ADD;
+    --blue-dim: rgba(55, 138, 221, 0.15);
+    --coral: #D85A30;
+    --coral-dim: rgba(216, 90, 48, 0.15);
+    --amber: #EF9F27;
+    --amber-dim: rgba(239, 159, 39, 0.15);
+    --border: rgba(255,255,255,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.8;
+    font-size: 17px;
+  }
+
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 60px 40px;
+  }
+
+  .doc-header {
+    border-bottom: 1px solid var(--gold-border);
+    padding-bottom: 40px;
+    margin-bottom: 50px;
+  }
+  .doc-header .company {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .series-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--coral);
+    background: var(--coral-dim);
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+  }
+  .doc-header h1 {
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  .doc-header .subtitle {
+    font-size: 18px;
+    color: var(--gold-dim);
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  .doc-header .meta {
+    margin-top: 20px;
+    font-size: 13px;
+    color: var(--text-tertiary);
+  }
+
+  h2 {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--gold);
+    margin-top: 56px;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  h3 {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-top: 36px;
+    margin-bottom: 12px;
+  }
+  p {
+    margin-bottom: 18px;
+    color: var(--text-secondary);
+  }
+  p strong, li strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .quote-block {
+    border-left: 3px solid var(--gold);
+    padding: 16px 24px;
+    margin: 32px 0;
+    background: rgba(196, 164, 74, 0.04);
+  }
+  .quote-block p {
+    color: var(--text-primary);
+    font-size: 18px;
+    font-style: italic;
+    margin-bottom: 0;
+    line-height: 1.6;
+  }
+
+  .callout {
+    background: var(--gold-bg);
+    border: 1px solid var(--gold-border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 28px 0;
+  }
+  .callout p { color: var(--text-primary); margin-bottom: 0; }
+  .callout .label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .insight {
+    background: var(--teal-dim);
+    border: 1px solid rgba(29, 158, 117, 0.25);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 28px 0;
+  }
+  .insight .label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 8px;
+  }
+  .insight p { color: var(--text-primary); margin-bottom: 0; }
+
+  ul, ol {
+    margin: 12px 0 20px 24px;
+    color: var(--text-secondary);
+  }
+  li { margin-bottom: 10px; }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 48px 0;
+  }
+
+  .doc-footer {
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px solid var(--gold-border);
+    font-size: 13px;
+    color: var(--text-tertiary);
+  }
+
+  .series-nav {
+    margin-top: 48px;
+    padding: 24px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .series-nav .nav-title {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 16px;
+  }
+  .series-nav .nav-item {
+    display: block;
+    padding: 8px 0;
+    font-size: 14px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .series-nav .nav-item:last-child { border-bottom: none; }
+  .series-nav .nav-item.current { color: var(--gold); font-weight: 600; }
+  .series-nav .nav-item .part { color: var(--text-tertiary); font-size: 12px; }
+
+  @media print {
+    body { background: #fff; color: #1a1a1a; }
+    .container { max-width: 100%; padding: 20px; }
+    h2 { color: #333; }
+    p, td, li { color: #333; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="doc-header">
+  <div class="company">Vitso</div>
+  <div class="series-tag">Fear -- Part I: The Enemy Within</div>
+  <h1>The Vibe Coders Are Here (And We're Not Ready)</h1>
+  <div class="subtitle">AI isn't just making developers faster. It's turning non-developers into builders. And nobody's ready for what that means.</div>
+  <div class="meta">
+    Tom Smolinsky -- December 2025<br>
+    Originally published on LinkedIn
+  </div>
+</div>
+
+<!-- OPENING -->
+
+<p>I've spent 20+ years building bridges between development, operations, and security teams. I've transformed organizations where these groups went from adversarial to collaborative, where velocity and security reinforced each other instead of jockeying for position. I know what's possible when technology teams work together.</p>
+
+<p>I also know when something fundamental has changed.</p>
+
+<p>AI-powered development isn't just making developers faster. It's turning non-developers into builders. And while we're still fighting yesterday's battles about development velocity versus security controls, a new paradigm is eating the horizon right in front of us.</p>
+
+<div class="quote-block">
+  <p>I know because I became one of them.</p>
+</div>
+
+<!-- THE EXPERIENCE -->
+
+<h2>The confession</h2>
+
+<p>I recently dove into AI development. Not to audit developers or study them from a distance, but to understand what AI-assisted building actually feels like.</p>
+
+<p>I'm a techie at heart. I've been in technology my entire career, from electronics tech to systems engineer to strategic leadership. I love technology and feel most at home amongst my fellow technologists making things happen. So I set out to see what AI could do, how it does it, and how I might use it to extend my own capabilities.</p>
+
+<p>I started with what I knew: ChatGPT and Claude. I wanted to try to build a local environment where multiple AI agents could work together to perform tasks using Codex, Claude Code, and the Gemini CLI.</p>
+
+<p>It worked. Very cool.</p>
+
+<p>Then I started thinking about features. What if it had a UI? What if I could track jobs in a dashboard? What if it could scan its own codebase and generate context-aware tasks to get smarter with each build?</p>
+
+<p>So I built an AI-powered development pipeline. Plain language input to orchestrate multiple AI models to plan, code, test, and deploy to GitHub. All automatically.</p>
+
+<p>I got it to work!</p>
+
+<p>Each feature led to the next. Token tracking. Cost estimation. Auto-repo creation. Job queue. Status monitoring. Next feature. Next feature.</p>
+
+<p>In one session, it scanned its own codebase, generated context-aware tasks, wrote the code, and pushed to GitHub. All from a single job description.</p>
+
+<p>The entire flow took minutes.</p>
+
+<p><strong>I built this? What?!?</strong></p>
+
+<p>I'm not a developer. Never have been. I was a decent scripter in my day, but coding was never in my wheelhouse. But now, I felt like AI was giving me a chance to build things I couldn't before.</p>
+
+<p>And in that flow of building, security never crossed my mind. Not once.</p>
+
+<!-- THE RECKONING -->
+
+<h2>The reckoning</h2>
+
+<p>I sat back and admired what I'd built as reality began to hit me. Where are my passwords and keys stored? How much access does this now have to my file system and AI accounts? How do I know which component accessed what, when and why?</p>
+
+<div class="quote-block">
+  <p>What was I thinking? I wasn't. That's the point.</p>
+</div>
+
+<p>I ran a security assessment on my own creation. Eighteen vulnerabilities. Several critical. The code worked perfectly. That's what made it dangerous.</p>
+
+<p>AI optimizes for code that works, not code that's safe. It replicates insecure patterns at scale with complete confidence.</p>
+
+<p>I wasn't deliberately ignoring security. In my excitement and drive to create something important, I wasn't thinking about the security requirements. I guess security could come later? But later means bolting on security instead of building it in. The architecture is already set with the wrong habits baked in.</p>
+
+<div class="callout">
+  <div class="label">The uncomfortable truth</div>
+  <p>So now, here's what keeps me up at night. Even with all of my experience, when I started building with AI, security was in the parking lot. If that can happen to me, what's happening everywhere else?</p>
+</div>
+
+<!-- THE REAL PROBLEM -->
+
+<h2>The real problem we're not talking about</h2>
+
+<p>We're having the wrong conversation.</p>
+
+<p>Across our organizations, development, security, operations, and executive leadership are still debating developer velocity versus security controls. Still fighting about approval processes and gate requirements. Still treating this like the same tension we've always had, just faster.</p>
+
+<p>But something fundamentally different is happening. AI is creating an entirely new class of builders.</p>
+
+<p>People who couldn't code before can now ship working software. Non-technical domain experts build tools for their own workflows. Business analysts prototype solutions without waiting for engineering resources.</p>
+
+<div class="quote-block">
+  <p>The vibe coders are here... And they're not asking for permission...</p>
+</div>
+
+<p>Folks no longer have to wait for developers to work on their ideas. They don't have to wait for infrastructure. They aren't thinking about operations, security, or supportability. They're just building.</p>
+
+<!-- PROFESSIONAL VS NEW BUILDERS -->
+
+<h2>Professional builders and new builders: a shared challenge</h2>
+
+<p>Professional developers may not always get security right, but they understand the terrain. They know the difference between production and non-production. They have lived through deployment cycles, dependency issues, operational realities, and the consequences when something breaks.</p>
+
+<p>The new builders bring something professional developers can't fake: deep domain expertise. They understand their problems in ways that would take engineers months to learn. AI removed the coding barrier. It didn't grant domain knowledge.</p>
+
+<p>But they have never had to think about production systems, integration points, security and compliance constraints, or who wakes up at 2 AM when something fails.</p>
+
+<p><strong>This is the new shadow IT:</strong> working prototypes built in days by people who expect them to be deployed, but who have never had to think about what deployment actually requires.</p>
+
+<!-- THE OPPORTUNITY -->
+
+<h2>The moment we've needed</h2>
+
+<p>This feels disruptive because it IS disruptive. But it may also be the moment we have needed.</p>
+
+<p>For years we have tried to break down the walls between engineering, operations, and security. We built frameworks, held workshops, aligned on principles, and still found ourselves fighting over process, ownership, and control. AI has finally forced the issue.</p>
+
+<p>It will take engineering, operations, and security to operate as one and build together what comes next.</p>
+
+<h3>For builders</h3>
+
+<p>Here's the thing: no one has solved this yet.</p>
+
+<p>How do you build systems that receive applications from anywhere -- a product manager prototyping a customer feature, a domain expert building a data pipeline, a business analyst automating a workflow -- and route them intelligently toward production?</p>
+
+<p>This is a genuine architecture problem. Intake APIs that assess what arrived. Scanning engines that understand application patterns. Transformation pipelines that inject secure-by-default authentication, secret handling, observability. Security encoded as architecture, not bolted on as review. Routing logic that knows the difference between customer-facing features and internal tools.</p>
+
+<p>You need security's expertise to get the threat modeling right. You need operations to design for what happens at 2 AM. This isn't governance overhead. It's the domain knowledge required to architect systems this complex.</p>
+
+<p>Whoever figures this out first writes the playbook. Your patterns become the reference architecture. Your platform becomes what the industry copies.</p>
+
+<p>Build this proactively and you're the thought leaders who designed the paradigm. Wait, and you're firefighters inheriting deployments under controls you didn't design.</p>
+
+<p>And when something genuinely can't be made production-ready? Your platform explains why and shows a path forward. Rejection that teaches, not gates that block.</p>
+
+<p>You're not containing vibe coders. You're designing the system that transforms them into builders.</p>
+
+<h3>For security and operations</h3>
+
+<p>You've spent years being the people who say no.</p>
+
+<p>Now you get to design the systems that say yes safely. Your expertise isn't overhead. It's the domain knowledge that makes the platform architecturally sound.</p>
+
+<p>This is your seat at the design table. Take it.</p>
+
+<h3>For executives</h3>
+
+<p>Right now, AI feels like chaos.</p>
+
+<p>"Our talent will leave if we don't adopt it." "Our customers will panic if we do." "Our competitors might figure it out first."</p>
+
+<p>But what if this is the moment you actually enable AI at scale, safely?</p>
+
+<p>With deliberate resource allocation and strategic planning, we transform invisible risk into competitive advantage. You create career evolution, not job elimination. And you can tell a compelling story to the market.</p>
+
+<p>Competitors are frozen in panic about AI. Customers are asking tough questions about how you're managing AI risk. But you've unified your technology organization to harness AI responsibly and intelligently while ensuring security, operational excellence, and integrity.</p>
+
+<p>Market differentiation. Customer confidence. Thought leadership while competitors remain paralyzed.</p>
+
+<h3>The opportunity</h3>
+
+<p>Done proactively, this creates new roles. Citizen developer platform builders. Integration engineers. AI output validators.</p>
+
+<p>Just as cloud computing evolved data center engineers and system admins into cloud engineers and platform specialists, this wave evolves technologists into the architects of what comes next.</p>
+
+<h3>And a frank word to executives</h3>
+
+<p>If the technology teams don't come together on this, it falls to you to force the issue. This is the defining technology challenge of the next five years and your window to turn AI from a source of anxiety into a competitive advantage ahead of the competition.</p>
+
+<div class="quote-block">
+  <p>Build it and they will come. Block it..... and they will come anyway.</p>
+</div>
+
+<p>The vibe coders are here.</p>
+
+<p>Time to get ready.</p>
+
+<!-- SERIES NAV -->
+<div class="series-nav">
+  <div class="nav-title">Fear -- A Series on AI, Governance, and the Space Between</div>
+  <div class="nav-item current"><span class="part">Part I: The Enemy Within</span> -- The Vibe Coders Are Here (And We're Not Ready)</div>
+  <div class="nav-item"><span class="part">Part II: The Weapon</span> -- I Governed My Own Agents for a Weekend. Here's What Broke.</div>
+  <div class="nav-item"><span class="part">Part III: Witch Hunt</span> -- Zero Trust for Agent Runtime (coming soon)</div>
+  <div class="nav-item"><span class="part">Part IV: Freeze</span> -- (coming soon)</div>
+</div>
+
+<div class="doc-footer">
+  <p><strong>Vitso</strong> -- Bridging the gap between Engineering Velocity and Operational Security</p>
+  <p>Tom Smolinsky is a CISSP-certified technology and security executive and founder of Vitso, providing strategic advisory to AI-driven leadership teams in healthcare and regulated industries. He is the architect of the Agent Runtime governance framework for autonomous AI agents.</p>
+</div>
+
+</div>
+</body>
+</html>

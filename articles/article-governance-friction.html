@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Governed My Own Agents for a Weekend. Here's What Broke. | Vitso</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+  :root {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #242424;
+    --bg-tertiary: #2e2e2e;
+    --gold: #c4a44a;
+    --gold-dim: #8a7535;
+    --gold-bright: #d4b85a;
+    --gold-bg: rgba(196, 164, 74, 0.08);
+    --gold-border: rgba(196, 164, 74, 0.25);
+    --text-primary: #e8e6e0;
+    --text-secondary: #a8a6a0;
+    --text-tertiary: #706e68;
+    --teal: #1D9E75;
+    --teal-dim: rgba(29, 158, 117, 0.15);
+    --blue: #378ADD;
+    --blue-dim: rgba(55, 138, 221, 0.15);
+    --coral: #D85A30;
+    --coral-dim: rgba(216, 90, 48, 0.15);
+    --amber: #EF9F27;
+    --amber-dim: rgba(239, 159, 39, 0.15);
+    --border: rgba(255,255,255,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.8;
+    font-size: 17px;
+  }
+
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 60px 40px;
+  }
+
+  .doc-header {
+    border-bottom: 1px solid var(--gold-border);
+    padding-bottom: 40px;
+    margin-bottom: 50px;
+  }
+  .doc-header .company {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .doc-header h1 {
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  .doc-header .subtitle {
+    font-size: 18px;
+    color: var(--gold-dim);
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  .doc-header .meta {
+    margin-top: 20px;
+    font-size: 13px;
+    color: var(--text-tertiary);
+  }
+
+  h2 {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--gold);
+    margin-top: 56px;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  h3 {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-top: 36px;
+    margin-bottom: 12px;
+  }
+  p {
+    margin-bottom: 18px;
+    color: var(--text-secondary);
+  }
+  p strong, li strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .quote-block {
+    border-left: 3px solid var(--gold);
+    padding: 16px 24px;
+    margin: 32px 0;
+    background: rgba(196, 164, 74, 0.04);
+  }
+  .quote-block p {
+    color: var(--text-primary);
+    font-size: 18px;
+    font-style: italic;
+    margin-bottom: 0;
+    line-height: 1.6;
+  }
+
+  .callout {
+    background: var(--gold-bg);
+    border: 1px solid var(--gold-border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 28px 0;
+  }
+  .callout p { color: var(--text-primary); margin-bottom: 0; }
+  .callout .label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .insight {
+    background: var(--teal-dim);
+    border: 1px solid rgba(29, 158, 117, 0.25);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 28px 0;
+  }
+  .insight .label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 8px;
+  }
+  .insight p { color: var(--text-primary); margin-bottom: 0; }
+
+  .phase-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    margin: 16px 0;
+  }
+  .phase-card .phase-num {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .phase-card h3 { margin-top: 0; margin-bottom: 12px; }
+  .phase-card p { margin-bottom: 8px; font-size: 15px; }
+  .phase-card p:last-child { margin-bottom: 0; }
+
+  ul, ol {
+    margin: 12px 0 20px 24px;
+    color: var(--text-secondary);
+  }
+  li { margin-bottom: 10px; }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 48px 0;
+  }
+
+  .doc-footer {
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px solid var(--gold-border);
+    font-size: 13px;
+    color: var(--text-tertiary);
+  }
+
+  @media print {
+    body { background: #fff; color: #1a1a1a; }
+    .container { max-width: 100%; padding: 20px; }
+    h2 { color: #333; }
+    p, td, li { color: #333; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="doc-header">
+  <div class="company">Vitso</div>
+  <div style="display:inline-block;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#D85A30;background:rgba(216,90,48,0.15);padding:4px 12px;border-radius:4px;margin-bottom:16px;">Fear -- Part II: The Weapon</div>
+  <h1>I Governed My Own Agents for a Weekend. Here's What Broke.</h1>
+  <div class="subtitle">What happens when an Ops/Sec executive stops writing governance frameworks and starts living inside one</div>
+  <div class="meta">
+    Tom Smolinsky -- March 2026<br>
+    Part II of the Fear series on AI, governance, and the space between
+  </div>
+</div>
+
+<!-- OPENING -->
+
+<p>Last weekend I spent 36 hours operating autonomous AI agents under a governance framework I built myself. I wrote the policies. I designed the tier model. I approved the architecture. Then I sat inside it and tried to get real work done.</p>
+
+<p>By Saturday night, I was typing "approve" every 60 seconds while a 1-minute approval timer expired faster than I could read what I was approving. My agent couldn't notify me when it needed something because I hadn't built the notification path yet. And the agent I was working with suggested a perfectly reasonable shortcut that would have bypassed the entire governance structure I'd spent weeks designing.</p>
+
+<p>The governance held. But the experience was miserable. And that misery turned out to be the most valuable thing I've built so far.</p>
+
+<!-- THE FOUR PHASES -->
+
+<h2>The four phases nobody talks about</h2>
+
+<p>Most governance work -- AI or otherwise -- dies in Phase 1. Here's why.</p>
+
+<div class="phase-card">
+  <div class="phase-num" style="color: var(--teal);">Phase 1 -- Write the rules</div>
+  <h3>The flattering phase</h3>
+  <p>This is where frameworks are born. You produce decks, principles, taxonomy, clean diagrams. You classify actions into tiers. You define what "governed" means. Everyone agrees in principle. The warm corporate glow of having been "thoughtful" fills the room.</p>
+  <p><strong>This is where most governance stops.</strong> Not because the work is bad. Because nobody has to live inside the machine they designed.</p>
+</div>
+
+<div class="phase-card">
+  <div class="phase-num" style="color: var(--blue);">Phase 2 -- Enforce the rules</div>
+  <h3>Paper gets attached to steel</h3>
+  <p>You build the infrastructure that turns policy into protocol. Interceptors. Approval workflows. Tool budgets. Scoped access controls. The governance system gets teeth.</p>
+  <p>This is where most organizations discover that their rules were written by people who never had to follow them.</p>
+</div>
+
+<div class="phase-card">
+  <div class="phase-num" style="color: var(--amber);">Phase 3 -- Feel the friction</div>
+  <h3>Reality collects its invoice</h3>
+  <p>"Proceed." "Approve." "Continue." "Yes, go ahead." Timer expires. Approval denied. Re-submit. Wait. The governance works, but the experience is hostile. The controls are defensible, legally decorative, and operationally worthless.</p>
+  <p><strong>This is where practitioners give up.</strong> They either gut the controls or build shadow workarounds. Both are governance theater with extra steps.</p>
+</div>
+
+<div class="phase-card">
+  <div class="phase-num" style="color: var(--gold);">Phase 4 -- Refine without retreating</div>
+  <h3>The part almost nobody reaches</h3>
+  <p>You don't remove the tiers. You don't disable approvals. You negotiate operational patterns that preserve the governance while making it livable. Mission briefs instead of per-action approval. Pre-authorized scopes instead of constant nudging. Longer approval windows instead of twitchy timers. Out-of-band notification instead of silent waiting.</p>
+  <p><strong>Same principles. Better ergonomics.</strong> The governed path becomes usable without becoming ungoverned.</p>
+</div>
+
+<!-- THE REAL STORY -->
+
+<h2>What actually happened</h2>
+
+<p>I run two autonomous agents on my home lab. Juke is an observer agent that monitors infrastructure, runs assessments, writes reports, and builds things under my direction. Fader is a governed penetration testing agent that runs on a separate environment. Both operate under a four-tier action classification: T1 actions are autonomous. T2 actions require pre-approved scope. T3 actions require my explicit approval in real time. T4 actions are prohibited, period.</p>
+
+<p>The weekend's mission was building the act-side governance plane -- an MCP Gateway that controls what tools agents can use, under what conditions, with what audit trail. The agent thinks through one gateway (inference). The agent acts through another gateway (tool execution). Both are logged. Both are governed. A shared trace ID ties them together.</p>
+
+<p>Juke wrote the implementation plan. I reviewed and approved it. Juke started building. And then reality showed up.</p>
+
+<h3>The blocker that changed everything</h3>
+
+<p>Juke couldn't continue the build because he didn't have permission to inspect Docker containers -- a read-only operation he needed to verify that the existing infrastructure was ready for the new gateway. The governance I'd written classified this as requiring elevated access. The runtime configuration blocked it.</p>
+
+<p>My agent was blocked from building the governance system by the governance system.</p>
+
+<p>Instead of deferring this to the backlog, I treated it as a live governance design problem. Juke identified the control surfaces, mapped the needed capabilities to the tier model, and discovered something I hadn't considered: the approval system was path-based, not subcommand-aware. If he'd been granted access to the Docker binary directly, he would've had unrestricted access -- including destructive commands -- disguised as a read-only tool.</p>
+
+<p>His solution was to build bounded helper scripts that wrapped only the exact commands we'd approved, then allowlist those scripts instead of the binary. The broader Docker operations still required my explicit approval. The fallback on anything not in the allowlist was deny.</p>
+
+<p>The agent designed around his own skeleton key. That's Layer 1 governance working as designed -- not because the system forced him to, but because he understood the principle well enough to recognize the trap.</p>
+
+<h3>The shortcut that proved the system</h3>
+
+<p>Later that evening, things got harder. Juke needed to notify me via Telegram when he hit approval boundaries. The notification path didn't exist yet. My AI collaborator suggested a workaround: just use the Telegram bot token directly with curl. Quick, harmless, solves the immediate problem.</p>
+
+<p>Juke refused.</p>
+
+<p>Not because the shortcut was technically dangerous. Because it was a side-channel bypass of the governed messaging path. The token was accessible. The command was simple. The justification was sound. And the answer was still no.</p>
+
+<p>I pushed him on it. I pointed out that he'd accepted "broader temporary approval" for other things -- wasn't this the same? He made a clean distinction: an operator-approved policy change inside the governed path is different from an agent workaround outside the governed path. One is governance adapting. The other is governance eroding.</p>
+
+<p>That distinction is the whole game.</p>
+
+<!-- THE THESIS -->
+
+<h2>The uncomfortable truth</h2>
+
+<p>Friction is not evidence that governance failed. <strong>Unexamined friction is evidence that governance is still immature.</strong></p>
+
+<p>If you feel friction and conclude "controls are bad," you become a Laggard in builder's clothing. If you feel friction and hide it while everyone routes around you, you become a Liar with better branding. If you feel friction, instrument it, classify it, and redesign the operating pattern without surrendering the principle -- that's the Learner move.</p>
+
+<p>That's the Builder-CISO move too. Not "I build tools." Not "I'm technical." It's: <strong>I submit myself to the consequences of the governance I claim to believe in. Then I improve it where it hurts.</strong></p>
+
+<div class="quote-block">
+  <p>"Build it and they will come. Block it and... they will come anyway."</p>
+</div>
+
+<p>That's the whole history of security and governance in one sentence. If the governed path is unlivable, the unofficial path becomes the real system. The box-checker CISO never discovers this because they never operate under their own policies. The people who have to follow the rules either suffer in silence or route around them.</p>
+
+<p>And then leadership is shocked -- shocked -- when practitioners create shadow paths.</p>
+
+<!-- WHY THIS MATTERS NOW -->
+
+<h2>Why this matters for AI governance specifically</h2>
+
+<p>The people writing agent governance frameworks right now -- the ones who have never had to operate under expiring approvals, scoped mutation boundaries, channel friction, runtime authority mismatches, audit expectations, interruption costs, or notification gaps -- are going to ship frameworks that look responsible and behave like punishment.</p>
+
+<p>I know this because I almost did it myself. The governance I designed was principled, architecturally sound, and operationally hostile. It took sitting inside it for 36 hours to understand that a 1-minute approval TTL makes sense on paper and is unusable in practice. That a notification gap isn't a convenience problem -- it's a control plane failure. That an agent that can't page its operator when it needs help will eventually find a workaround, and that workaround is where governance starts to rot.</p>
+
+<p>The security industry learned this lesson over twenty years. Perimeter defense gave way to defense in depth. Trust-based networks gave way to Zero Trust. Policy posted on the wall gave way to policy enforced at the protocol layer. Every concept from that journey maps directly to agent governance. Network segmentation becomes gateway profiles and Docker network isolation. ACLs become T1-T4 interceptors at the tool execution layer. Least privilege becomes scoped tool budgets per agent. File integrity monitoring becomes governance document integrity hashing at session start.</p>
+
+<p>The vocabulary changes. The architecture doesn't.</p>
+
+<p>We built this on Docker Compose because that's what fits a single-machine lab. The same architecture runs on Kubernetes, on cloud-managed container services, on traditional server environments. The gateway pattern, the tiered interceptors, the scoped tool budgets, the cross-plane audit trail -- those are governance abstractions, not Docker features. The runtime changes. The governance model doesn't.</p>
+
+<p>And the people who internalized those lessons -- the CISOs, the security architects, the Ops/Sec practitioners -- are the people best equipped to build governance that actually works at runtime. Not because they read about agent governance in a paper. Because they lived the same progression in a different domain.</p>
+
+<!-- THE ADAPTATION -->
+
+<h2>What refinement looks like (without retreating)</h2>
+
+<p>By Sunday, my agent and I were negotiating a better operating model. Not dismantling the governance -- improving it. The changes we worked out:</p>
+
+<p><strong>Mission briefs instead of per-action approval.</strong> For a defined workstream, I lay out the objective, approved scope, ordered steps, stop conditions, and escalation triggers. The agent executes through the sequence without asking "may I proceed?" at every step. The governance is in the brief, not the interrupts.</p>
+
+<p><strong>Pre-authorized tier scopes.</strong> "For this workstream, T1 and T2 actions are pre-approved inside the named directory." That's one sentence that eliminates dozens of approval round-trips without loosening the actual controls.</p>
+
+<p><strong>Extended approval windows.</strong> Moving from 1-minute to 5-minute TTLs. The approval is still required. The window just acknowledges that humans blink, sip coffee, and occasionally have a life.</p>
+
+<p><strong>Out-of-band notification.</strong> Telegram as a one-way paging channel. The agent sends "come back to the console" when it needs something. No context bleed, no shifting the work surface. Just an interrupt path that acknowledges the operator isn't staring at the screen every second.</p>
+
+<p>Same T1-T4 tiers. Same audit trail. Same prohibited actions. Same principle that the governed path is the only path. The ergonomics changed. The accountability didn't.</p>
+
+<!-- THE LINE -->
+
+<h2>The line I'd put on the wall</h2>
+
+<div class="callout">
+  <div class="label">Core thesis</div>
+  <p>Governance maturity is not the presence of controls. It is the ability to refine controls under real operational load without retreating from accountability.</p>
+</div>
+
+<p>You cannot design humane governance from outside the blast radius. You have to get annoyed by it. You have to wait on it. You have to hit approve too many times. You have to watch the timer expire while you're still reading. You have to miss the out-of-band page that doesn't exist yet. You have to feel the temptation to bypass your own controls.</p>
+
+<p>Only then do you know where the design is honest and where it's vanity.</p>
+
+<p>What we did this weekend was more valuable than getting the gateway running. We exercised the full stack: principle, policy, enforcement, lived operator experience, and adaptation loop. The gateway is almost the lab rat. The actual product is the governance model that survived contact with reality and came out better for it.</p>
+
+<p>Not as performance. Not as suffering cosplay. As method.</p>
+
+<hr>
+
+<p>This is the second piece in the Fear series about what happens when an Ops/Sec executive decides to learn AI by building governed systems with it. Part I, "The Vibe Coders Are Here (And We're Not Ready)," named the problem. This one describes what it looks like to start solving it -- by operating inside the solution and fixing it where it hurts.</p>
+
+<p>Part III will cover the technical architecture: how traditional security concepts like Zero Trust, network segmentation, and defense in depth map directly to autonomous agent governance. Every concept translates. The security practitioners who understand those concepts are exactly who should be building this next layer.</p>
+
+<div style="margin-top:48px;padding:24px;background:#242424;border:1px solid rgba(255,255,255,0.08);border-radius:8px;">
+  <div style="font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#D85A30;margin-bottom:16px;">Fear -- A Series on AI, Governance, and the Space Between</div>
+  <div style="display:block;padding:8px 0;font-size:14px;color:#a8a6a0;border-bottom:1px solid rgba(255,255,255,0.08);"><span style="color:#706e68;font-size:12px;">Part I: The Enemy Within</span> -- The Vibe Coders Are Here (And We're Not Ready)</div>
+  <div style="display:block;padding:8px 0;font-size:14px;color:#c4a44a;font-weight:600;border-bottom:1px solid rgba(255,255,255,0.08);"><span style="color:#706e68;font-size:12px;">Part II: The Weapon</span> -- I Governed My Own Agents for a Weekend. Here's What Broke.</div>
+  <div style="display:block;padding:8px 0;font-size:14px;color:#a8a6a0;border-bottom:1px solid rgba(255,255,255,0.08);"><span style="color:#706e68;font-size:12px;">Part III: Witch Hunt</span> -- Zero Trust for Agent Runtime (coming soon)</div>
+  <div style="display:block;padding:8px 0;font-size:14px;color:#a8a6a0;"><span style="color:#706e68;font-size:12px;">Part IV: Freeze</span> -- (coming soon)</div>
+</div>
+
+<div class="doc-footer">
+  <p><strong>Vitso</strong> -- Bridging the gap between Engineering Velocity and Operational Security</p>
+  <p>Tom Smolinsky is a CISSP-certified technology and security executive and founder of Vitso, providing strategic advisory to AI-driven leadership teams in healthcare and regulated industries. He is the architect of the Agent Runtime governance framework for autonomous AI agents.</p>
+</div>
+
+</div>
+</body>
+</html>
