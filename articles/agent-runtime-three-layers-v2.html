@@ -6,9 +6,9 @@
 <title>Three Layers Your AI Agent Needs Before It Acts | Vitso</title>
 
 <!-- SEO -->
-<meta name="description" content="AI agents are crossing from advisory to action. They call APIs, execute code, modify systems, and send messages on your behalf. Here are the three runtime governance layers that need to exist at that boundary.">
+<meta name="description" content="AI agents are crossing from advisory to action. Build-time governance establishes the foundation. Runtime governance picks up where the build hands off. Here are the three layers that need to exist at that boundary.">
 <meta property="og:title" content="Three Layers Your AI Agent Needs Before It Acts">
-<meta property="og:description" content="AI agents are crossing from advisory to action. Here are the three runtime governance layers that need to exist at that boundary.">
+<meta property="og:description" content="Build-time governance establishes the foundation. Runtime governance picks up where the build hands off. Here are the three layers.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://vitsotech.com/articles/agent-runtime-three-layers-v2.html">
 <meta property="og:image" content="https://vitsotech.com/tom-smolinsky.jpg">
@@ -354,11 +354,13 @@
 
   <p>Most production AI applications were built for the advisory side. The model does the thinking, a human does the doing. The architecture assumes a person in the middle. That assumption is disappearing.</p>
 
-  <p>As agents gain tool access and the ability to take independent action, a new question emerges: what governance needs to exist at runtime, between the agent's reasoning and its ability to affect the real world?</p>
+  <p>The industry has made meaningful progress on the build side of this problem. Frameworks for scoped agent identity, documented capability manifests, governed tool connections, instrumented observability, and per-task credential management have established real standards for how agents should be constructed. That work matters. A well-built agent is the precondition for everything that follows.</p>
+
+  <p>What follows is the question those frameworks were not designed to answer: what governance needs to exist at runtime, between the agent's reasoning and its ability to affect the real world, after the build is complete and the agent is operating?</p>
 
   <div class="warning">
     <div class="label">The gap</div>
-    <p>Most AI applications rely on the model as their only governance layer. The model is trained to refuse harmful requests. The model is instructed via system prompt to stay in scope. But the model makes probabilistic judgments. It can be wrong. It can be manipulated. It can hallucinate a tool call nobody asked for. It can follow a user instruction it should have questioned. When the model is the only thing between intent and consequence, a single point of failure exists between every interaction and every system the agent can reach.</p>
+    <p>Build-time governance establishes how an agent is constructed: what it can access, what tools it connects to, what credentials it holds. Runtime governance addresses what happens while the agent operates: whether its actions stay within scope, whether its reasoning has drifted, and whether there is a second check between a bad decision and an irreversible consequence. These are different disciplines. Most deployments have invested in the first. The second is where the gap is.</p>
   </div>
 
   <p>The question is not whether models will get more capable and more reliable. They will. The question is what happens when they get it wrong anyway, for whatever reason: a novel attack, a hallucinated action, a misunderstood instruction, a gradual drift in behavior over a long interaction, or simply a bad judgment call on a close decision. The answer, for most production applications today, is: nothing. There is no second check.</p>
@@ -504,7 +506,7 @@
     </div>
     <div class="layer-breaks">
       <div class="breaks-label">Without this layer</div>
-      <p>Every tool and API the agent was provisioned with at build time is available at runtime with no further check. Nobody re-evaluates intent. Nobody asks whether the reasoning that produced the action was sound. The model was the only governance boundary, and the model is probabilistic. One bad judgment call, one manipulated interaction, one hallucinated tool invocation, and the action executes unopposed.</p>
+      <p>Every tool and API the agent was provisioned with at build time is available at runtime with no further check. Nobody re-evaluates intent. Nobody asks whether the reasoning that produced the action was sound. Even a well-built agent with scoped identity and documented capabilities can act outside its intended scope if there is no runtime enforcement between its reasoning and your systems.</p>
     </div>
   </div>
 
@@ -518,26 +520,26 @@
 
   <p>The causes of bad reasoning are infinite: manipulation, hallucination, misinterpretation, drift, honest error. The consequence is the same: the agent attempts an action it should not take. Model hardening addresses the causes. Runtime governance addresses the result. If you can only invest in one, invest in the layer that catches the action before it executes.</p>
 
-  <h2>With and Without</h2>
+  <h2>Build and Run</h2>
 
   <div class="comparison">
     <div class="comparison-col without">
-      <h3>Without runtime governance</h3>
-      <p>The model is the only governance layer.</p>
-      <p>The agent has no defined scope beyond its system prompt.</p>
+      <h3>Build-time governance alone</h3>
+      <p>The agent is correctly constructed: scoped identity, documented capabilities, instrumented connections.</p>
+      <p>Those controls were evaluated at deployment. What happens at runtime is governed by the model's own judgment.</p>
       <p>Every tool provisioned at build time is available at runtime with no further check.</p>
       <p>There is no independent observer watching the agent's reasoning for drift or anomaly.</p>
-      <p>Intent is assumed from build time and never re-evaluated.</p>
-      <p>You find out when the consequence lands.</p>
+      <p>Intent is established at build time and assumed from there forward.</p>
+      <p>You know the agent was built correctly. You don't know whether it's operating correctly right now.</p>
     </div>
     <div class="comparison-col with">
-      <h3>With runtime governance</h3>
-      <p>The agent has a pre-established identity and authority model that outranks runtime input.</p>
+      <h3>Build-time plus runtime governance</h3>
+      <p>The agent is correctly constructed, and its runtime behavior is independently governed.</p>
       <p>Every action is classified into tiers: autonomous, pre-approved, requires approval, or prohibited.</p>
       <p>A policy decision sits between the agent and every tool call. Default is ask. Fallback is deny.</p>
-      <p>An independent observer monitors reasoning traces and can intervene in near real time.</p>
-      <p>Intent is re-evaluated at every action boundary, not assumed.</p>
-      <p>You find out when the alert fires, not when the damage lands.</p>
+      <p>An independent observer correlates reasoning traces, action logs, and system metrics in near real time.</p>
+      <p>Intent is re-evaluated at every action boundary, not assumed from build time.</p>
+      <p>You know the agent was built correctly, and you can verify it's operating correctly right now.</p>
     </div>
   </div>
 
@@ -545,7 +547,7 @@
 
   <p>Security practitioners will recognize this pattern. It is defense in depth applied to AI agent governance. The same principle that puts a firewall, an intrusion detection system, network segmentation, and endpoint protection between an attacker and your data. No single control is expected to hold on its own. The system is designed so that the failure of one layer is caught by the next.</p>
 
-  <p>The AI agent governance conversation has largely skipped this step. Most frameworks describe what to measure, what to audit, and what to report after deployment. They do not describe what to put between an agent's reasoning and your production systems at runtime. Agent Runtime does.</p>
+  <p>The AI agent governance conversation has made real progress on the build side. What comes next is the runtime side: what to put between an agent's reasoning and your production systems while the agent is operating. Agent Runtime is one approach to filling that gap. This piece describes its starting point.</p>
 
   <div class="insight">
     <div class="label">The practical question</div>
@@ -554,7 +556,7 @@
 
   <hr>
 
-  <p style="font-size:14px; color:var(--text-tertiary); line-height:1.7;">This piece covers one dimension of the Agent Runtime framework: what needs to exist between an agent's reasoning and your production systems at runtime. The broader framework addresses organizational readiness, maturity assessment, action classification, governance principles, and the operational transition from human-operated to agent-operated environments. These three layers are the starting point, not the whole picture.</p>
+  <p style="font-size:14px; color:var(--text-tertiary); line-height:1.7;">This piece covers one dimension of the Agent Runtime framework: what needs to exist between an agent's reasoning and your production systems at runtime. The broader framework addresses organizational readiness, maturity assessment, action classification, governance principles, and the operational transition from human-operated to agent-operated environments. These three layers are a starting point, not a complete answer. Open design challenges remain, including baseline maintenance for the observer, scope boundaries for vendor-hosted agent environments, and the operational overhead of fine-grained runtime scoping. This is a direction we are actively building toward, not a destination we have reached.</p>
 
   <div class="doc-footer">
     <p><strong>Vitso</strong> &middot; Bridging the gap between Engineering Velocity and Operational Security</p>
