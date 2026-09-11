@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Acceptance | Vitso</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --plum-deep: #3d2352;
+    --plum: #5b3a6b;
+    --plum-light: #7b5a8e;
+    --lavender: #c4a8d4;
+    --lavender-pale: #ede4f3;
+    --cream: #faf7f5;
+    --sage: #6b8f5e;
+    --sage-light: #e8f0e4;
+    --text: #2d2438;
+    --text-light: #6b5f75;
+    --white: #ffffff;
+    --red: #c0392b;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--text);
+    background: var(--cream);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .header {
+    background: var(--plum-deep);
+    padding: 2rem 2rem 1.75rem;
+    color: var(--white);
+  }
+  .header-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .header .brand {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--lavender);
+    margin-bottom: 0.75rem;
+  }
+  .header h1 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+  }
+  .header .subtitle {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--lavender);
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .intro {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 2rem;
+    border-left: 3px solid var(--sage);
+    font-size: 0.95rem;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  .deliverable {
+    background: var(--white);
+    border-radius: 8px;
+    margin-bottom: 1.25rem;
+    overflow: hidden;
+    border: 1px solid var(--lavender-pale);
+    transition: border-color 0.2s;
+  }
+  .deliverable:has(input:checked) {
+    border-color: var(--sage);
+  }
+  .deliverable-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+  }
+  .deliverable-header input[type="checkbox"] {
+    margin-top: 0.2rem;
+    width: 20px;
+    height: 20px;
+    accent-color: var(--sage);
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+  .deliverable-header label {
+    cursor: pointer;
+    flex: 1;
+  }
+  .deliverable-header h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--plum-deep);
+    margin-bottom: 0.25rem;
+  }
+  .deliverable-header .summary {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    font-weight: 300;
+  }
+  .deliverable-details {
+    padding: 0 1.5rem 1.25rem 3.75rem;
+  }
+  .deliverable-details .item {
+    font-size: 0.88rem;
+    color: var(--text);
+    margin-bottom: 0.6rem;
+    line-height: 1.6;
+    font-weight: 300;
+    padding-left: 1rem;
+    position: relative;
+  }
+  .deliverable-details .item::before {
+    content: "\2713";
+    color: var(--sage);
+    font-weight: 600;
+    position: absolute;
+    left: 0;
+    font-size: 0.8rem;
+  }
+  .deliverable-details .tech {
+    color: var(--plum-light);
+    font-size: 0.82rem;
+  }
+  .deliverable-details .pending {
+    color: var(--plum-light);
+    font-style: italic;
+    font-size: 0.85rem;
+    padding-left: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--plum-light);
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .signature-section {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 1.75rem;
+    margin-top: 2rem;
+    border: 1px solid var(--lavender-pale);
+  }
+  .signature-section h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--plum-deep);
+    margin-bottom: 0.25rem;
+  }
+  .signature-section .note {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+  }
+  .form-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .form-group label {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-light);
+  }
+  .form-group input {
+    padding: 0.65rem 0.85rem;
+    border: 1px solid var(--lavender-pale);
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: var(--text);
+    background: var(--cream);
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus {
+    outline: none;
+    border-color: var(--plum-light);
+  }
+
+  .submit-btn {
+    display: block;
+    width: 100%;
+    padding: 0.9rem;
+    background: var(--sage);
+    color: var(--white);
+    border: none;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    transition: background 0.2s;
+  }
+  .submit-btn:hover { background: #5a7d4e; }
+  .submit-btn:disabled {
+    background: var(--lavender);
+    cursor: not-allowed;
+  }
+
+  .error-msg {
+    color: var(--red);
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    display: none;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.8rem;
+    color: var(--text-light);
+    font-weight: 300;
+  }
+  .footer a {
+    color: var(--plum);
+    text-decoration: none;
+  }
+
+  .success-message {
+    display: none;
+    background: var(--sage-light);
+    border: 1px solid var(--sage);
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+  }
+  .success-message h3 {
+    color: var(--sage);
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+  .success-message p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 600px) {
+    .form-row { flex-direction: column; }
+    .header h1 { font-size: 1.4rem; }
+    .container { padding: 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="brand">Vitso</div>
+    <h1>Project Acceptance</h1>
+    <div class="subtitle">Your Possibilities | Robin Rooth-Fogel, LCSW</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="intro">
+    Please review each deliverable below. Check each box to confirm it has been completed to your satisfaction. Once all items are acknowledged, enter your name and submit to confirm acceptance of the completed work.
+  </div>
+
+  <form id="acceptanceForm" action="https://formspree.io/f/xdeobwbj" method="POST">
+    <input type="hidden" name="_subject" value="Project Acceptance: Your Possibilities">
+
+    <div class="section-label">Deliverables</div>
+
+    <!-- 1. Website -->
+    <div class="deliverable">
+      <div class="deliverable-header">
+        <input type="checkbox" id="d1" name="website" value="accepted" required>
+        <label for="d1">
+          <h3>1. Professional Website</h3>
+          <span class="summary">Your practice website, live and accessible to clients</span>
+        </label>
+      </div>
+      <div class="deliverable-details">
+        <div class="item">Custom-designed, mobile-friendly website live at <strong>yourpossibilities.us</strong></div>
+        <div class="item">Encrypted, secure visitor sessions so client data stays protected in transit <span class="tech">(Secure Sockets Layer / SSL / HTTPS)</span></div>
+        <div class="item">Interactive office location map with click-for-directions</div>
+        <div class="item">Practice information including your credentials, education, specialty training, services, and contact details</div>
+        <div class="item">Crisis resources and HIPAA-appropriate contact guidance in the footer</div>
+      </div>
+    </div>
+
+    <!-- 2. Domain -->
+    <div class="deliverable">
+      <div class="deliverable-header">
+        <input type="checkbox" id="d2" name="domain_infrastructure" value="accepted" required>
+        <label for="d2">
+          <h3>2. Domain &amp; Web Infrastructure</h3>
+          <span class="summary">Everything that connects your web address to your website</span>
+        </label>
+      </div>
+      <div class="deliverable-details">
+        <div class="item">Domain name <strong>yourpossibilities.us</strong> configured so visitors reach your website when they type in your address <span class="tech">(DNS A Records, CNAME)</span></div>
+        <div class="item">Automatic security certificate that keeps your site trusted by all web browsers, renewed automatically at no cost <span class="tech">(SSL via Let's Encrypt / GitHub Pages)</span></div>
+        <div class="item">Website hosting on a reliable, zero-cost platform with no monthly fees <span class="tech">(GitHub Pages)</span></div>
+      </div>
+    </div>
+
+    <!-- 3. Email -->
+    <div class="deliverable">
+      <div class="deliverable-header">
+        <input type="checkbox" id="d3" name="business_email" value="accepted" required>
+        <label for="d3">
+          <h3>3. HIPAA-Compliant Business Email</h3>
+          <span class="summary">Professional email accounts with healthcare-grade privacy protections</span>
+        </label>
+      </div>
+      <div class="deliverable-details">
+        <div class="item">Three professional email accounts: <strong>robin@</strong>, <strong>cindy@</strong>, and <strong>andrew@</strong>yourpossibilities.us</div>
+        <div class="item">Full productivity suite including email, calendar, video meetings, and file storage <span class="tech">(Google Workspace Business Starter)</span></div>
+        <div class="item">HIPAA Business Associate Agreement executed with Google, legally covering all Workspace services for protected health information <span class="tech">(BAA)</span></div>
+      </div>
+    </div>
+
+    <!-- 4. Email Security -->
+    <div class="deliverable">
+      <div class="deliverable-header">
+        <input type="checkbox" id="d4" name="email_security" value="accepted" required>
+        <label for="d4">
+          <h3>4. Email Identity Protection</h3>
+          <span class="summary">Advanced security that prevents impersonation and ensures reliable email delivery</span>
+        </label>
+      </div>
+      <div class="deliverable-details">
+        <div class="item">Authorized sender verification, preventing unauthorized systems from sending email pretending to be from yourpossibilities.us <span class="tech">(Sender Policy Framework / SPF)</span></div>
+        <div class="item">Cryptographic email signatures that prove each message genuinely came from your account and has not been tampered with <span class="tech">(DomainKeys Identified Mail / DKIM)</span></div>
+        <div class="item">Domain protection policy that instructs receiving email servers to quarantine suspicious messages claiming to be from your domain <span class="tech">(Domain-based Message Authentication / DMARC)</span></div>
+      </div>
+    </div>
+
+    <!-- 5. Documentation -->
+    <div class="deliverable">
+      <div class="deliverable-header">
+        <input type="checkbox" id="d5" name="documentation" value="accepted" required>
+        <label for="d5">
+          <h3>5. Technology Handover Documentation</h3>
+          <span class="summary">Complete reference guide for all accounts, services, and ongoing costs</span>
+        </label>
+      </div>
+      <div class="deliverable-details">
+        <div class="item">Written guide covering all accounts, login locations, DNS records, and vendor costs</div>
+        <div class="item">HIPAA compliance summary including BAA execution details</div>
+        <div class="item">Email best practices for maintaining healthcare privacy compliance</div>
+        <div class="item">Ongoing cost summary with vendor billing details</div>
+        <div class="item">Support contact information for future changes and questions</div>
+        <div class="pending">Delivery pending: to be reviewed together before final sign-off.</div>
+      </div>
+    </div>
+
+    <!-- Signature -->
+    <div class="signature-section">
+      <h3>Acknowledgment</h3>
+      <p class="note">By entering your name and submitting this form, you confirm that the deliverables checked above have been completed to your satisfaction.</p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" required placeholder="Robin Rooth-Fogel">
+        </div>
+        <div class="form-group">
+          <label for="date">Date</label>
+          <input type="date" id="date" name="date" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="title">Title / Role</label>
+        <input type="text" id="title" name="title" placeholder="Owner / Licensed Clinical Social Worker">
+      </div>
+
+      <div class="form-group" style="margin-top: 1rem;">
+        <label for="comments">Comments (optional)</label>
+        <input type="text" id="comments" name="comments" placeholder="Any notes or items to follow up on">
+      </div>
+
+      <p class="error-msg" id="errorMsg">Please check all deliverable boxes before submitting.</p>
+
+      <button type="submit" class="submit-btn" id="submitBtn">Submit Acceptance</button>
+    </div>
+
+    <div class="success-message" id="successMsg">
+      <h3>Acceptance Submitted</h3>
+      <p>Thank you, Robin. Your project acceptance has been recorded and sent to Vitso. A copy will be sent to your email for your records.</p>
+    </div>
+  </form>
+</div>
+
+<div class="footer">
+  Vitso | <a href="https://vitsotech.com">vitsotech.com</a> | tom@vitsotech.com
+</div>
+
+<script>
+  // Set today's date as default
+  document.getElementById('date').valueAsDate = new Date();
+
+  document.getElementById('acceptanceForm').addEventListener('submit', function(e) {
+    var boxes = document.querySelectorAll('input[type="checkbox"]');
+    var allChecked = true;
+    boxes.forEach(function(box) {
+      if (!box.checked) allChecked = false;
+    });
+
+    if (!allChecked) {
+      e.preventDefault();
+      document.getElementById('errorMsg').style.display = 'block';
+      return;
+    }
+
+    document.getElementById('errorMsg').style.display = 'none';
+
+    // Let Formspree handle the submission
+    // On success, show the success message
+    e.preventDefault();
+    var form = this;
+    var data = new FormData(form);
+
+    fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    }).then(function(response) {
+      if (response.ok) {
+        form.style.display = 'none';
+        document.querySelector('.intro').style.display = 'none';
+        document.getElementById('successMsg').style.display = 'block';
+      } else {
+        alert('There was a problem submitting the form. Please contact Tom directly.');
+      }
+    }).catch(function() {
+      alert('There was a problem submitting the form. Please contact Tom directly.');
+    });
+  });
+</script>
+</body>
+</html>
